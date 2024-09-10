@@ -1,0 +1,18 @@
+@mixin montserrat-700 {
+  font-family: 'Montserrat', sans-serif;
+  line-height: normal;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@mixin montserrat-500 {
+  font-family: 'Montserrat', sans-serif;
+  line-height: normal;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@mixin container {
+  width: 75%;
+  margin: auto;
+}

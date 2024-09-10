@@ -1,0 +1,12 @@
+@import '../main';
+
+.icon {
+
+  path {
+    transition: .3s;
+  }
+
+  &:hover path {
+    fill: $headerLinkHover;
+  }
+}

@@ -1,10 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import Catalog from "../pages/Catalog.tsx";
+import Router from "./Router.tsx";
 
 const routes = createBrowserRouter([
   {
-    path: "/",
-    Component: Catalog,
+    Component: Router,
+    children: [
+      {
+        path: "/",
+        Component: Catalog,
+      },
+    ],
   },
 ]);
 

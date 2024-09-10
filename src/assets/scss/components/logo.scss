@@ -1,0 +1,13 @@
+@import "../main.scss";
+
+.logo {
+  @include montserrat-700;
+  font-size: 25px;
+  text-decoration: none;
+  color: $logo;
+  transition: .3s;
+
+  &:hover {
+    color: $logoHover;
+  }
+}
