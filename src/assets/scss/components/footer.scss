@@ -1,0 +1,21 @@
+@import '../main';
+
+.footer {
+  @include container;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: $footer-bg;
+  padding: 30px;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__social-links {
+
+  }
+
+  &__social-link {
+    margin-right: 18px;
+  }
+
+}

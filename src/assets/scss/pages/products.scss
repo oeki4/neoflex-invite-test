@@ -1,7 +1,7 @@
 @import '../main';
 
 .catalog {
-  @include container-70;
+  @include container;
 
   @media(max-width: 576px) {
     width: 85%;
@@ -17,7 +17,7 @@
     @include montserrat-600;
     font-size: 20px;
     color: $category-title;
-    margin-bottom: 20px;
+    margin: 0 10px 20px;
   }
 
   &__items {

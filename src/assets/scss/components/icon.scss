@@ -10,3 +10,14 @@
     fill: $headerLinkHover;
   }
 }
+
+.social-icon {
+
+  path {
+    transition: .3s;
+  }
+
+  &:hover path {
+    fill: $social-link-hover;
+  }
+}
