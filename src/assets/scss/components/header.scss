@@ -6,6 +6,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 45px;
+
+  @media(max-width: 576px) {
+    width: 90%;
+  }
 
   &__links {
     height: 100%;
