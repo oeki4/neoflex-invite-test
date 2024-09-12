@@ -19,6 +19,14 @@
   font-size: 14px;
 }
 
+@mixin montserrat-400 {
+  font-family: 'Montserrat', sans-serif;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+
 @mixin container {
   width: 75%;
   margin: auto;

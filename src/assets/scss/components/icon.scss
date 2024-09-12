@@ -1,6 +1,6 @@
 @import '../main';
 
-.icon {
+.header-icon {
 
   path {
     transition: .3s;
@@ -9,6 +9,10 @@
   &:hover path {
     fill: $headerLinkHover;
   }
+}
+
+.icon {
+  cursor: pointer;
 }
 
 .social-icon {

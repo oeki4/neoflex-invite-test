@@ -3,7 +3,7 @@ import "../../assets/scss/components/icon.scss";
 export default function Favorite() {
   return (
     <svg
-      className={"icon"}
+      className="header-icon"
       width="25"
       height="25"
       viewBox="0 0 23 20"

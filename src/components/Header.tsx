@@ -6,16 +6,16 @@ import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header className={"header"}>
+    <header className="header">
       <Logo />
-      <div className={"header__links"}>
-        <NavLink to={"/"} className={"header__link"}>
+      <div className="header__links">
+        <NavLink to="/" className="header__link">
           <Favorite />
-          <span className={"header__link-count"}>1</span>
+          <span className="header__link-count">1</span>
         </NavLink>
-        <NavLink to={"/"} className={"header__link"}>
+        <NavLink to="/" className="header__link">
           <Basket />
-          <span className={"header__link-count"}>10</span>
+          <span className="header__link-count">10</span>
         </NavLink>
       </div>
     </header>

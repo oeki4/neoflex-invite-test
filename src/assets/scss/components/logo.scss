@@ -10,4 +10,8 @@
   &:hover {
     color: $logoHover;
   }
+
+  &--footer {
+    grid-area: logo;
+  }
 }
