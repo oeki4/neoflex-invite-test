@@ -1,5 +1,5 @@
 import ProductCard from "../components/ProductCard.tsx";
-import "../assets/scss/pages/products.scss";
+import "../assets/scss/pages/catalog.scss";
 
 export default function Catalog() {
   return (
@@ -7,9 +7,6 @@ export default function Catalog() {
       <h1 className="category__title">Наушники</h1>
       <div className="category">
         <div className="category__items">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
           <ProductCard />
         </div>
       </div>

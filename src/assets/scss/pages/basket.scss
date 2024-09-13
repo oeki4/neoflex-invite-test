@@ -1,0 +1,17 @@
+@import '../main';
+
+.basket {
+  @include container;
+  min-height: 70vh;
+
+  @media(max-width: 576px) {
+    width: 85%;
+  }
+
+  &__subtitle {
+    @include montserrat-600;
+    font-size: 20px;
+    color: $basket-subtitle;
+    margin: 0 10px 20px;
+  }
+}

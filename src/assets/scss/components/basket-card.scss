@@ -1,0 +1,118 @@
+@import '../main';
+
+.card {
+  max-width: 650px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $basket-card-bg;
+  border-radius: 30px;
+  box-shadow: 0 0 20px 0 #0000001A;
+
+  @media(max-width: 576px) {
+    width: min-content;
+  }
+
+  &__info {
+    display: grid;
+
+    grid-template-areas:
+            'image desc'
+            'switch desc';
+
+    @media(max-width: 576px) {
+      grid-template-areas:
+            'image'
+            'desc'
+            'switch';
+    }
+
+    &-img {
+      grid-area: image;
+      max-height: 150px;
+      margin-bottom: 20px;
+
+      @media(max-width: 576px) {
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  &__desc {
+    grid-area: desc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25px;
+
+    @media(max-width: 576px) {
+      margin-left: 0;
+      margin-bottom: 12px;
+    }
+
+    &-name {
+      @include montserrat-500;
+      font-size: 17px;
+      color: $basket-card-name;
+      margin-bottom: 12px;
+      white-space: nowrap;
+    }
+
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    margin-left: 20px;
+  }
+}
+
+.switch {
+  grid-area: switch;
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    background: $basket-card-switch-btn-bg;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: normal;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    transition: 0.3s;
+    padding: 0;
+
+    &:hover {
+      background-color: $basket-card-switch-btn-bg-hover;
+    }
+  }
+
+  &__value {
+    @include montserrat-600;
+    font-size: 17px;
+    color: $basket-card-switch-value;
+    margin: 0 25px;
+  }
+}
+
+.price {
+  @include montserrat-600;
+  font-size: 15px;
+  color: $basket-card-desc-price;
+  white-space: nowrap;
+
+  &--result {
+    color: $basket-card-result-price;
+
+  }
+}

@@ -9,11 +9,11 @@ export default function Header() {
     <header className="header">
       <Logo />
       <div className="header__links">
-        <NavLink to="/" className="header__link">
+        <NavLink to={"/basket"} className="header__link">
           <Favorite />
           <span className="header__link-count">1</span>
         </NavLink>
-        <NavLink to="/" className="header__link">
+        <NavLink to={"/basket"} className="header__link">
           <Basket />
           <span className="header__link-count">10</span>
         </NavLink>
