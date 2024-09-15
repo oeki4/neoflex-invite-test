@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import CatalogStore from "./basket.ts";
+import BasketStore from "./basket.ts";
 
 const store = {
-  basketStore: new CatalogStore(),
+  basketStore: new BasketStore(),
 };
 
 export const StoreContext = createContext(store);

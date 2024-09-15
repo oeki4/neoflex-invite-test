@@ -1,8 +1,10 @@
 import ProductCard from "../components/ProductCard.tsx";
 import "../assets/scss/pages/catalog.scss";
 import products from "./../mocks/products.json";
+import { useStore } from "../store/store.ts";
 
 const Catalog = () => {
+  const { basketStore } = useStore();
   const addToBasket = (product: {
     id: number;
     title: string;
@@ -19,6 +21,7 @@ const Catalog = () => {
         amount: 1,
       });
       localStorage.setItem("basket", JSON.stringify(basketJson));
+      basketStore.setBasketProducts(basketJson);
       return;
     }
     try {
@@ -38,8 +41,10 @@ const Catalog = () => {
       }
 
       localStorage.setItem("basket", JSON.stringify(basketJson));
+      basketStore.setBasketProducts(basketJson);
     } catch {
       localStorage.setItem("basket", JSON.stringify([]));
+      basketStore.setBasketProducts([]);
     }
   };
 

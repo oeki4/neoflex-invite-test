@@ -53,8 +53,8 @@ const BasketCard = ({
           </div>
           <p className="price price--result">
             {product.priceWithDiscount
-              ? product.priceWithDiscount
-              : product.price}{" "}
+              ? product.priceWithDiscount * product.amount
+              : product.price * product.amount}{" "}
             ₽
           </p>
         </div>

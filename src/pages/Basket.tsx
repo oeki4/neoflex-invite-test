@@ -1,23 +1,11 @@
 import "../assets/scss/pages/basket.scss";
 import BasketCard from "../components/BasketCard.tsx";
-import { useEffect } from "react";
 import { useStore } from "../store/store.ts";
 import { observer } from "mobx-react";
+import { useEffect } from "react";
 
 const Basket = observer(() => {
   const { basketStore } = useStore();
-
-  useEffect(() => {
-    const basket = localStorage.getItem("basket");
-    if (basket) {
-      try {
-        const basketJson = JSON.parse(basket);
-        basketStore.setBasketProducts(basketJson);
-      } catch {
-        localStorage.setItem("basket", JSON.stringify([]));
-      }
-    }
-  }, []);
 
   const setBasketItemAmount = (id: number, value: number) => {
     if (value < 1) {
@@ -44,6 +32,17 @@ const Basket = observer(() => {
     localStorage.setItem("basket", JSON.stringify(basketStore.basketProducts));
   };
 
+  useEffect(() => {
+    const newPrice = basketStore.basketProducts.reduce(
+      (sum, el) =>
+        el.priceWithDiscount
+          ? sum + el.priceWithDiscount * el.amount
+          : sum + el.price * el.amount,
+      0,
+    );
+    basketStore.setResultPrice(newPrice);
+  }, [basketStore.basketProducts]);
+
   const deleteItemFromBasket = (id: number) => {
     basketStore.setBasketProducts(
       basketStore.basketProducts.filter((el) => el.id !== id),
@@ -68,7 +67,7 @@ const Basket = observer(() => {
         <div className="order">
           <div className="order__info">
             <p className="order__info-text">Итого</p>
-            <p className="order__info-price">₽ 2 927</p>
+            <p className="order__info-price">₽ {basketStore.resultPrice}</p>
           </div>
           <button className="order__btn">Перейти к оформлению</button>
         </div>
