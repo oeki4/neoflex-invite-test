@@ -15,6 +15,17 @@
   cursor: pointer;
 }
 
+.trash-icon {
+
+  path {
+    transition: .3s;
+  }
+
+  &:hover path {
+    fill: $basket-card-trash-hover;
+  }
+}
+
 .social-icon {
 
   path {

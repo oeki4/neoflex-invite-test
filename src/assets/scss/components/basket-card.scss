@@ -8,6 +8,7 @@
   box-shadow: 0 0 20px 0 #0000001A;
   box-sizing: border-box;
   position: relative;
+  margin-bottom: 20px;
 
   &__trash {
     position: absolute;
@@ -93,6 +94,11 @@
     border: none;
     cursor: pointer;
     display: none;
+    transition: .3s;
+
+    &:hover {
+      background-color: $basket-card-delete-bg-hover;
+    }
 
     @media(max-width: 576px) {
       display: block;

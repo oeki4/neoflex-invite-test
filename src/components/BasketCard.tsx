@@ -2,34 +2,80 @@ import "../assets/scss/components/basket-card.scss";
 import Trash from "./Icons/Trash.tsx";
 import WhiteTrash from "./Icons/WhiteTrash.tsx";
 
-export default function BasketCard() {
+export default function BasketCard({
+  product,
+  setBasketItemAmount,
+  deleteItemFromBasket,
+}: {
+  product: {
+    id: number;
+    title: string;
+    photo: string;
+    rate: number;
+    price: number;
+    priceWithDiscount: number | null;
+    amount: number;
+  };
+  setBasketItemAmount: (id: number, value: number) => void;
+  deleteItemFromBasket: (id: number) => void;
+}) {
   return (
     <div className="card">
       <div className="card__info">
         <div className="card__img">
           <img
             className="card__img-inner"
-            src="https://i.imgur.com/Fpm86L9.png"
+            src={`/img/products/${product.photo}`}
             alt="photo"
           />
         </div>
         <div className="card__desc">
-          <p className="card__desc-name">Apple BYZ S852I</p>
-          <p className="price">2 927 ₽</p>
+          <p className="card__desc-name">{product.title}</p>
+          <p className="price">
+            {product.priceWithDiscount
+              ? product.priceWithDiscount
+              : product.price}{" "}
+            ₽
+          </p>
         </div>
         <div className="card__switch-price">
           <div className="switch">
-            <button className="switch__btn">&#8211;</button>
-            <span className="switch__value">1</span>
-            <button className="switch__btn">+</button>
+            <button
+              onClick={() =>
+                setBasketItemAmount(product.id, product.amount - 1)
+              }
+              className="switch__btn"
+            >
+              &#8211;
+            </button>
+            <span className="switch__value">{product.amount}</span>
+            <button
+              onClick={() =>
+                setBasketItemAmount(product.id, product.amount + 1)
+              }
+              className="switch__btn"
+            >
+              +
+            </button>
           </div>
-          <p className="price price--result">2 927 ₽</p>
+          <p className="price price--result">
+            {product.priceWithDiscount
+              ? product.priceWithDiscount
+              : product.price}{" "}
+            ₽
+          </p>
         </div>
       </div>
-      <button className="card__delete">
+      <button
+        onClick={() => deleteItemFromBasket(product.id)}
+        className="card__delete"
+      >
         <WhiteTrash />
       </button>
-      <span className="card__trash">
+      <span
+        onClick={() => deleteItemFromBasket(product.id)}
+        className="card__trash"
+      >
         <Trash />
       </span>
     </div>

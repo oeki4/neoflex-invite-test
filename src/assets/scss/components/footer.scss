@@ -50,6 +50,11 @@
     font-size: 17px;
     text-decoration: none;
     color: $footer-link;
+    transition: .3s;
+
+    &:hover {
+      color: $footer-link-hover;
+    }
   }
 
   &__service-lang {

@@ -2,26 +2,56 @@ import "../assets/scss/components/product-card.scss";
 import { NavLink } from "react-router-dom";
 import Star from "./Icons/Star.tsx";
 
-export default function ProductCard() {
+export default function ProductCard({
+  product,
+  addToBasket,
+}: {
+  product: {
+    id: number;
+    title: string;
+    photo: string;
+    rate: number;
+    price: number;
+    priceWithDiscount: number | null;
+  };
+  addToBasket: (product: {
+    id: number;
+    title: string;
+    photo: string;
+    rate: number;
+    price: number;
+    priceWithDiscount: number | null;
+  }) => void;
+}) {
   return (
     <NavLink to="/" className="product-card">
       <div className="product-card__img-wrapper">
         <img
-          src="https://i.imgur.com/Fpm86L9.png"
+          src={`/img/products/${product.photo}`}
           alt=""
           className="product-card__img"
         />
       </div>
       <div className="product-card__info">
-        <p className="product-card__name">Apple BYZ S852I</p>
-        <p className="product-card__price">
-          2927 ₽<span className="product-card__discount">3527 ₽</span>
-        </p>
+        <p className="product-card__name">{product.title}</p>
+        {product.priceWithDiscount ? (
+          <p className="product-card__price">
+            {product.priceWithDiscount} ₽
+            <span className="product-card__discount">{product.price} ₽</span>
+          </p>
+        ) : (
+          <p className="product-card__price">{product.price} ₽</p>
+        )}
         <div className="product-card__rate-wrapper">
           <Star />
-          <p className="product-card__rate">4.7</p>
+          <p className="product-card__rate">{product.rate}</p>
         </div>
-        <button className="product-card__buy-btn">Купить</button>
+        <button
+          onClick={() => addToBasket(product)}
+          className="product-card__buy-btn"
+        >
+          Купить
+        </button>
       </div>
     </NavLink>
   );

@@ -82,5 +82,12 @@
     outline: none;
     border: none;
     cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      background-color: $basket-btn-bg-hover;
+    }
+
+
   }
 }
