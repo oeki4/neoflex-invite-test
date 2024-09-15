@@ -2,6 +2,7 @@ import ProductCard from "../components/ProductCard.tsx";
 import "../assets/scss/pages/catalog.scss";
 import products from "./../mocks/products.json";
 import { useStore } from "../store/store.ts";
+import { Product } from "../types/pages/catalog.types.ts";
 
 const Catalog = () => {
   const { basketStore } = useStore();
@@ -25,13 +26,13 @@ const Catalog = () => {
       return;
     }
     try {
-      const basketJson = JSON.parse(basket);
+      const basketJson: Product[] = JSON.parse(basket);
 
       const basketItemIndex = basketJson.findIndex(
         (el) => el.id === product.id,
       );
 
-      if (basketItemIndex != -1) {
+      if (basketItemIndex != -1 && basketJson[basketItemIndex].amount) {
         basketJson[basketItemIndex].amount += 1;
       } else {
         basketJson.push({

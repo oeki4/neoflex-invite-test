@@ -1,4 +1,4 @@
-export interface BasketProduct {
+export interface Product {
   id: number;
   title: string;
   photo: string;
