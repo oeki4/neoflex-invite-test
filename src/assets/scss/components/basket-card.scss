@@ -83,6 +83,7 @@
     grid-area: switch;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
   }
 
   &__delete {
@@ -107,7 +108,6 @@
 }
 
 .switch {
-
   display: flex;
   align-items: center;
 
@@ -147,8 +147,31 @@
   font-size: 15px;
   color: $basket-card-desc-price;
   white-space: nowrap;
+  position: relative;
 
   &--result {
     color: $basket-card-result-price;
+  }
+
+}
+.discount {
+  @include montserrat-600;
+  font-size: 14px;
+  color: $basket-card-desc-discount;
+  position: absolute;
+  bottom: -90%;
+  left: 0;
+  text-decoration: line-through;
+
+  @media(max-width: 992px) {
+    bottom: -75%;
+  }
+
+  &--result {
+    bottom: -30%;
+
+    @media(max-width: 992px) {
+      bottom: -20%;
+    }
   }
 }

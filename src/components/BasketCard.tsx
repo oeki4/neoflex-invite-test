@@ -29,6 +29,11 @@ const BasketCard = ({
               ? product.priceWithDiscount
               : product.price}{" "}
             ₽
+            {product.priceWithDiscount ? (
+              <span className="discount">{product.price} ₽ </span>
+            ) : (
+              ""
+            )}
           </p>
         </div>
         <div className="card__switch-price">
@@ -56,6 +61,13 @@ const BasketCard = ({
               ? product.priceWithDiscount * product.amount
               : product.price * product.amount}{" "}
             ₽
+            {product.priceWithDiscount ? (
+              <span className="discount discount--result">
+                {product.price * product.amount} ₽{" "}
+              </span>
+            ) : (
+              ""
+            )}
           </p>
         </div>
       </div>
