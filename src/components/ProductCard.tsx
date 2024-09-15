@@ -2,7 +2,7 @@ import "../assets/scss/components/product-card.scss";
 import { NavLink } from "react-router-dom";
 import Star from "./Icons/Star.tsx";
 
-export default function ProductCard({
+const ProductCard = ({
   product,
   addToBasket,
 }: {
@@ -22,7 +22,7 @@ export default function ProductCard({
     price: number;
     priceWithDiscount: number | null;
   }) => void;
-}) {
+}) => {
   return (
     <NavLink to="/" className="product-card">
       <div className="product-card__img-wrapper">
@@ -55,4 +55,6 @@ export default function ProductCard({
       </div>
     </NavLink>
   );
-}
+};
+
+export default ProductCard;

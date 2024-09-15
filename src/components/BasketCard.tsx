@@ -1,24 +1,17 @@
 import "../assets/scss/components/basket-card.scss";
 import Trash from "./Icons/Trash.tsx";
 import WhiteTrash from "./Icons/WhiteTrash.tsx";
+import { BasketProduct } from "../types/store/basket.types.ts";
 
-export default function BasketCard({
+const BasketCard = ({
   product,
   setBasketItemAmount,
   deleteItemFromBasket,
 }: {
-  product: {
-    id: number;
-    title: string;
-    photo: string;
-    rate: number;
-    price: number;
-    priceWithDiscount: number | null;
-    amount: number;
-  };
+  product: BasketProduct;
   setBasketItemAmount: (id: number, value: number) => void;
   deleteItemFromBasket: (id: number) => void;
-}) {
+}) => {
   return (
     <div className="card">
       <div className="card__info">
@@ -80,4 +73,6 @@ export default function BasketCard({
       </span>
     </div>
   );
-}
+};
+
+export default BasketCard;

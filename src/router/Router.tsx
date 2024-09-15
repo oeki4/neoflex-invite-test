@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer.tsx";
 import "../assets/scss/components/router.scss";
 
-export default function Router() {
+const Router = () => {
   return (
     <div className="router">
       <Header />
@@ -11,4 +11,6 @@ export default function Router() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Router;

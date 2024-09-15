@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Favorite() {
+const Favorite = () => {
   return (
     <svg
       className="header-icon"
@@ -16,4 +16,6 @@ export default function Favorite() {
       />
     </svg>
   );
-}
+};
+
+export default Favorite;

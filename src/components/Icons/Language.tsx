@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Language() {
+const Language = () => {
   return (
     <svg
       className="icon"
@@ -47,4 +47,6 @@ export default function Language() {
       />
     </svg>
   );
-}
+};
+
+export default Language;

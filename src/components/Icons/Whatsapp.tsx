@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Whatsapp() {
+const Whatsapp = () => {
   return (
     <svg
       className="social-icon"
@@ -23,4 +23,6 @@ export default function Whatsapp() {
       </defs>
     </svg>
   );
-}
+};
+
+export default Whatsapp;

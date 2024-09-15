@@ -1,7 +1,7 @@
 import "../assets/scss/components/lang-switch.scss";
 import Language from "./Icons/Language.tsx";
 
-export default function LangSwitch() {
+const LangSwitch = () => {
   return (
     <div className="language">
       <Language />
@@ -9,4 +9,6 @@ export default function LangSwitch() {
       <button className="language__btn">Eng</button>
     </div>
   );
-}
+};
+
+export default LangSwitch;

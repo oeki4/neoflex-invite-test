@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function VK() {
+const VK = () => {
   return (
     <svg
       className="social-icon"
@@ -23,4 +23,6 @@ export default function VK() {
       </defs>
     </svg>
   );
-}
+};
+
+export default VK;

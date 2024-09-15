@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function WhiteTrash() {
+const WhiteTrash = () => {
   return (
     <svg
       className="icon"
@@ -16,4 +16,6 @@ export default function WhiteTrash() {
       />
     </svg>
   );
-}
+};
+
+export default WhiteTrash;

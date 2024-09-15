@@ -1,4 +1,4 @@
-export default function Star() {
+const Star = () => {
   return (
     <svg
       width="25"
@@ -13,4 +13,6 @@ export default function Star() {
       />
     </svg>
   );
-}
+};
+
+export default Star;

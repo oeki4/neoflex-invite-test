@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Basket() {
+const Basket = () => {
   return (
     <svg
       className="header-icon"
@@ -16,4 +16,6 @@ export default function Basket() {
       />
     </svg>
   );
-}
+};
+
+export default Basket;

@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Telegram() {
+const Telegram = () => {
   return (
     <svg
       className="social-icon"
@@ -23,4 +23,5 @@ export default function Telegram() {
       </defs>
     </svg>
   );
-}
+};
+export default Telegram;

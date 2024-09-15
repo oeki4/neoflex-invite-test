@@ -2,7 +2,7 @@ import ProductCard from "../components/ProductCard.tsx";
 import "../assets/scss/pages/catalog.scss";
 import products from "./../mocks/products.json";
 
-export default function Catalog() {
+const Catalog = () => {
   const addToBasket = (product: {
     id: number;
     title: string;
@@ -59,4 +59,6 @@ export default function Catalog() {
       </div>
     </section>
   );
-}
+};
+
+export default Catalog;

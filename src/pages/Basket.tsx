@@ -1,36 +1,37 @@
 import "../assets/scss/pages/basket.scss";
 import BasketCard from "../components/BasketCard.tsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useStore } from "../store/store.ts";
+import { observer } from "mobx-react";
 
-export default function Basket() {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+const Basket = observer(() => {
+  const { basketStore } = useStore();
 
   useEffect(() => {
     const basket = localStorage.getItem("basket");
     if (basket) {
       try {
         const basketJson = JSON.parse(basket);
-        setProducts(basketJson);
+        basketStore.setBasketProducts(basketJson);
       } catch {
         localStorage.setItem("basket", JSON.stringify([]));
       }
     }
-    setLoading(false);
   }, []);
-
-  useEffect(() => {
-    if (loading) return;
-    localStorage.setItem("basket", JSON.stringify(products));
-  }, [products]);
 
   const setBasketItemAmount = (id: number, value: number) => {
     if (value < 1) {
-      setProducts(products.filter((el) => el.id !== id));
+      basketStore.setBasketProducts(
+        basketStore.basketProducts.filter((el) => el.id !== id),
+      );
+      localStorage.setItem(
+        "basket",
+        JSON.stringify(basketStore.basketProducts),
+      );
       return;
     }
-    setProducts(
-      products.map((el) => {
+    basketStore.setBasketProducts(
+      basketStore.basketProducts.map((el) => {
         if (el.id === id) {
           return {
             ...el,
@@ -40,10 +41,14 @@ export default function Basket() {
         return el;
       }),
     );
+    localStorage.setItem("basket", JSON.stringify(basketStore.basketProducts));
   };
 
   const deleteItemFromBasket = (id: number) => {
-    setProducts(products.filter((el) => el.id !== id));
+    basketStore.setBasketProducts(
+      basketStore.basketProducts.filter((el) => el.id !== id),
+    );
+    localStorage.setItem("basket", JSON.stringify(basketStore.basketProducts));
   };
 
   return (
@@ -51,7 +56,7 @@ export default function Basket() {
       <h2 className="basket__subtitle">Корзина</h2>
       <div className="basket__inner">
         <div className="basket__inner-cards">
-          {products.map((product, id) => (
+          {basketStore.basketProducts.map((product, id) => (
             <BasketCard
               setBasketItemAmount={setBasketItemAmount}
               deleteItemFromBasket={deleteItemFromBasket}
@@ -70,4 +75,6 @@ export default function Basket() {
       </div>
     </section>
   );
-}
+});
+
+export default Basket;

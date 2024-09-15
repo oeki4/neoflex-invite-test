@@ -1,6 +1,6 @@
 import "../../assets/scss/components/icon.scss";
 
-export default function Trash() {
+const Trash = () => {
   return (
     <svg
       className="icon trash-icon"
@@ -16,4 +16,6 @@ export default function Trash() {
       />
     </svg>
   );
-}
+};
+
+export default Trash;

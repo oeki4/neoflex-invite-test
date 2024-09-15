@@ -7,7 +7,7 @@ import Whatsapp from "./Icons/Whatsapp.tsx";
 import { NavLink } from "react-router-dom";
 import LangSwitch from "./LangSwitch.tsx";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="logo--footer">
@@ -55,4 +55,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

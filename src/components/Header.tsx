@@ -4,7 +4,7 @@ import Favorite from "./Icons/Favorite.tsx";
 import Basket from "./Icons/Basket.tsx";
 import { NavLink } from "react-router-dom";
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="header">
       <Logo />
@@ -20,4 +20,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;
