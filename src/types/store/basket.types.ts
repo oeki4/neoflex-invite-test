@@ -5,5 +5,5 @@ export interface BasketProduct {
   rate: number;
   price: number;
   priceWithDiscount: number | null;
-  amount?: number;
+  amount: number;
 }

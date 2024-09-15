@@ -2,18 +2,12 @@ import ProductCard from "../components/ProductCard.tsx";
 import "../assets/scss/pages/catalog.scss";
 import products from "./../mocks/products.json";
 import { useStore } from "../store/store.ts";
+import { BasketProduct } from "../types/store/basket.types.ts";
 import { Product } from "../types/pages/catalog.types.ts";
 
 const Catalog = () => {
   const { basketStore } = useStore();
-  const addToBasket = (product: {
-    id: number;
-    title: string;
-    photo: string;
-    rate: number;
-    price: number;
-    priceWithDiscount: number | null;
-  }) => {
+  const addToBasket = (product: Product) => {
     const basket = localStorage.getItem("basket");
     if (basket == null) {
       const basketJson = [];
@@ -26,7 +20,7 @@ const Catalog = () => {
       return;
     }
     try {
-      const basketJson: Product[] = JSON.parse(basket);
+      const basketJson: BasketProduct[] = JSON.parse(basket);
 
       const basketItemIndex = basketJson.findIndex(
         (el) => el.id === product.id,

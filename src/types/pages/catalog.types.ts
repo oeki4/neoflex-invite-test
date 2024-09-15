@@ -5,5 +5,4 @@ export interface Product {
   rate: number;
   price: number;
   priceWithDiscount: number | null;
-  amount?: number;
 }
