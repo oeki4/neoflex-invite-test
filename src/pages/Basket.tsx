@@ -3,9 +3,10 @@ import BasketCard from "../components/BasketCard.tsx";
 import { useStore } from "../store/store.ts";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
+import PaymentModal from "../components/Modals/PaymentModal.tsx";
 
 const Basket = observer(() => {
-  const { basketStore } = useStore();
+  const { basketStore, modalsStore } = useStore();
 
   const setBasketItemAmount = (id: number, value: number) => {
     if (value < 1) {
@@ -51,28 +52,40 @@ const Basket = observer(() => {
   };
 
   return (
-    <section className="basket">
-      <h2 className="basket__subtitle">Корзина</h2>
-      <div className="basket__inner">
-        <div className="basket__inner-cards">
-          {basketStore.basketProducts.map((product, id) => (
-            <BasketCard
-              setBasketItemAmount={setBasketItemAmount}
-              deleteItemFromBasket={deleteItemFromBasket}
-              key={id}
-              product={product}
-            />
-          ))}
-        </div>
-        <div className="order">
-          <div className="order__info">
-            <p className="order__info-text">Итого</p>
-            <p className="order__info-price">₽ {basketStore.resultPrice}</p>
+    <>
+      <section className="basket">
+        <h2 className="basket__subtitle">Корзина</h2>
+        <div className="basket__inner">
+          <div className="basket__inner-cards">
+            {basketStore.basketProducts.map((product, id) => (
+              <BasketCard
+                setBasketItemAmount={setBasketItemAmount}
+                deleteItemFromBasket={deleteItemFromBasket}
+                key={id}
+                product={product}
+              />
+            ))}
           </div>
-          <button className="order__btn">Перейти к оформлению</button>
+          <div className="order">
+            <div className="order__info">
+              <p className="order__info-text">Итого</p>
+              <p className="order__info-price">₽ {basketStore.resultPrice}</p>
+            </div>
+            <button
+              onClick={() => modalsStore.togglePaymentModal()}
+              className="order__btn"
+            >
+              Перейти к оформлению
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <PaymentModal
+        toggleIsActive={modalsStore.togglePaymentModal}
+        isActive={modalsStore.paymentModalActive}
+        resultPrice={basketStore.resultPrice}
+      />
+    </>
   );
 });
 

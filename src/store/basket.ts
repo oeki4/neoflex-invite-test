@@ -8,13 +8,13 @@ class BasketStore {
     makeAutoObservable(this);
   }
 
-  setBasketProducts(products: Array<BasketProduct>) {
+  setBasketProducts = (products: Array<BasketProduct>) => {
     this.basketProducts = products;
-  }
+  };
 
-  setResultPrice(value: number) {
+  setResultPrice = (value: number) => {
     this.resultPrice = value;
-  }
+  };
 }
 
 export default BasketStore;
