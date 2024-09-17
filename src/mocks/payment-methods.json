@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Сбербанк",
+    "img": "/img/payment-methods/sberbank.png"
+  },
+  {
+    "id": 2,
+    "name": "Альфабанк",
+    "img": "/img/payment-methods/alfabank.png"
+  },
+  {
+    "id": 3,
+    "name": "Райффайзен Банк",
+    "img": "/img/payment-methods/raiffeisen.png"
+  },
+  {
+    "id": 4,
+    "name": "T-Банк",
+    "img": "/img/payment-methods/tbank.png"
+  },
+  {
+    "id": 5,
+    "name": "ЮMoney",
+    "img": "/img/payment-methods/yoomoney.png"
+  }
+]

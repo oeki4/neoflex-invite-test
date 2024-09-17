@@ -3,6 +3,7 @@ import BasketCard from "../components/BasketCard.tsx";
 import { useStore } from "../store/store.ts";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
+import paymentMethods from "./../mocks/payment-methods.json";
 import PaymentModal from "../components/Modals/PaymentModal.tsx";
 
 const Basket = observer(() => {
@@ -84,6 +85,9 @@ const Basket = observer(() => {
         toggleIsActive={modalsStore.togglePaymentModal}
         isActive={modalsStore.paymentModalActive}
         resultPrice={basketStore.resultPrice}
+        paymentMethods={paymentMethods}
+        setSelectedPaymentMethod={modalsStore.setSelectedPaymentMethod}
+        selectedPaymentMethod={modalsStore.selectedPaymentMethod}
       />
     </>
   );

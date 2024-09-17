@@ -1,15 +1,22 @@
 import "../../assets/scss/components/modals/payment.scss";
 import { NavLink } from "react-router-dom";
 import Cross from "../Icons/Cross.tsx";
+import { PaymentMethod } from "../../types/pages/basket.types.ts";
 
 const PaymentModal = ({
   isActive,
   resultPrice,
   toggleIsActive,
+  paymentMethods,
+  setSelectedPaymentMethod,
+  selectedPaymentMethod,
 }: {
   isActive: boolean;
   toggleIsActive: () => void;
   resultPrice: number;
+  paymentMethods: PaymentMethod[];
+  setSelectedPaymentMethod: (method: PaymentMethod) => void;
+  selectedPaymentMethod: PaymentMethod | null;
 }) => {
   return (
     <>
@@ -28,55 +35,26 @@ const PaymentModal = ({
             <input type="text" placeholder="Email" className="payment__input" />
             <p className="payment__text">Способы оплаты</p>
             <ul className="methods">
-              <li>
-                <button className="methods__item-btn">
-                  <img
-                    className="methods__item-img"
-                    src="/img/payment-methods/sberbank.png"
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button className="methods__item-btn">
-                  <img
-                    className="methods__item-img"
-                    src="/img/payment-methods/tbank.png"
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button className="methods__item-btn">
-                  <img
-                    className="methods__item-img"
-                    src="/img/payment-methods/raiffeisen.png"
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button className="methods__item-btn">
-                  <img
-                    className="methods__item-img"
-                    src="/img/payment-methods/alfabank.png"
-                    alt=""
-                  />
-                </button>
-              </li>
-              <li>
-                <button className="methods__item-btn">
-                  <img
-                    className="methods__item-img"
-                    src="/img/payment-methods/yoomoney.png"
-                    alt=""
-                  />
-                </button>
-              </li>
+              {paymentMethods.map((el, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => setSelectedPaymentMethod(el)}
+                    className="methods__item-btn"
+                  >
+                    <img
+                      className={`methods__item-img ${selectedPaymentMethod?.id === el.id ? "methods__item-img--selected" : ""}`}
+                      src={el.img}
+                      alt={el.name}
+                    />
+                  </button>
+                </li>
+              ))}
             </ul>
             <div className="payment__text-between">
               <span className="payment__text">Способ оплаты</span>
-              <span className="payment__text">Сбербанк</span>
+              <span className="payment__text">
+                {selectedPaymentMethod?.name || "Не выбран"}
+              </span>
             </div>
             <div className="payment__text-between">
               <span className="payment__text">К оплате</span>

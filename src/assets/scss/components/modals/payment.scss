@@ -150,6 +150,10 @@
     border-radius: 15px;
     transition: .3s;
 
+    &--selected {
+      border-color: #252525;
+    }
+
     &:hover {
       border-color: #252525;
     }
