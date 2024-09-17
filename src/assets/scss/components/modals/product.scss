@@ -7,10 +7,14 @@
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 
   @media(max-width: 576px) {
+    min-height: 100vh;
     overflow-y: scroll;
+    align-content: start;
+    padding: 30px 0 30px;
+    box-sizing: border-box;
   }
 }
 
@@ -29,7 +33,7 @@
   @media(max-width: 576px) {
     max-width: 90%;
     padding: 20px;
-    margin-top: 60px;
+    margin: auto;
   }
 
   &__close-btn {
