@@ -5,4 +5,9 @@ export interface Product {
   rate: number;
   price: number;
   priceWithDiscount: number | null;
+  description: string;
+  characteristics: Array<{
+    name: string;
+    value: string;
+  }>;
 }

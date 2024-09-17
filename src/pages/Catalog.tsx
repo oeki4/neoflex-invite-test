@@ -63,7 +63,9 @@ const Catalog = observer(() => {
         </div>
       </section>
       <ProductModal
+        product={modalsStore.selectedProduct}
         isActive={modalsStore.productModalActive}
+        addToBasket={addToBasket}
         toggleIsActive={modalsStore.toggleProductModal}
       />
     </>

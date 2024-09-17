@@ -6,4 +6,9 @@ export interface BasketProduct {
   price: number;
   priceWithDiscount: number | null;
   amount: number;
+  description: string;
+  characteristics: Array<{
+    name: string;
+    value: string;
+  }>;
 }

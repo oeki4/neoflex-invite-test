@@ -1,31 +1,25 @@
 import "../assets/scss/components/product-card.scss";
 import Star from "./Icons/Star.tsx";
+import Eye from "./Icons/Eye.tsx";
+import { Product } from "../types/pages/catalog.types.ts";
 
 const ProductCard = ({
   product,
   addToBasket,
   toggleProductModal,
 }: {
-  product: {
-    id: number;
-    title: string;
-    photo: string;
-    rate: number;
-    price: number;
-    priceWithDiscount: number | null;
-  };
-  toggleProductModal: () => void;
-  addToBasket: (product: {
-    id: number;
-    title: string;
-    photo: string;
-    rate: number;
-    price: number;
-    priceWithDiscount: number | null;
-  }) => void;
+  product: Product;
+  toggleProductModal: (product: Product | null) => void;
+  addToBasket: (product: Product) => void;
 }) => {
   return (
-    <div onClick={() => toggleProductModal()} className="product-card">
+    <div className="product-card">
+      <span
+        onClick={() => toggleProductModal(product)}
+        className="product-card__more-btn"
+      >
+        <Eye />
+      </span>
       <div className="product-card__img-wrapper">
         <img
           src={`/img/products/${product.photo}`}

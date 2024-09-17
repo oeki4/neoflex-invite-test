@@ -26,6 +26,16 @@
   }
 }
 
+.eye-icon {
+  path {
+    transition: .3s;
+  }
+
+  &:hover g path {
+    fill: #CACACA;
+  }
+}
+
 .social-icon {
 
   path {
