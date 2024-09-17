@@ -1,10 +1,10 @@
 import "../assets/scss/components/product-card.scss";
-import { NavLink } from "react-router-dom";
 import Star from "./Icons/Star.tsx";
 
 const ProductCard = ({
   product,
   addToBasket,
+  toggleProductModal,
 }: {
   product: {
     id: number;
@@ -14,6 +14,7 @@ const ProductCard = ({
     price: number;
     priceWithDiscount: number | null;
   };
+  toggleProductModal: () => void;
   addToBasket: (product: {
     id: number;
     title: string;
@@ -24,7 +25,7 @@ const ProductCard = ({
   }) => void;
 }) => {
   return (
-    <NavLink to="/" className="product-card">
+    <div onClick={() => toggleProductModal()} className="product-card">
       <div className="product-card__img-wrapper">
         <img
           src={`/img/products/${product.photo}`}
@@ -53,7 +54,7 @@ const ProductCard = ({
           Купить
         </button>
       </div>
-    </NavLink>
+    </div>
   );
 };
 
