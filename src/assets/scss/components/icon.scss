@@ -1,9 +1,12 @@
 @import '../main';
 
 .header-icon {
-
   path {
     transition: .3s;
+  }
+
+  @media(max-width: 576px) {
+    max-width: 22px;
   }
 
   &:hover path {
@@ -37,9 +40,12 @@
 }
 
 .social-icon {
-
   path {
     transition: .3s;
+  }
+
+  @media(max-width: 576px) {
+    max-width: 25px;
   }
 
   &:hover path {

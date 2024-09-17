@@ -23,6 +23,10 @@
     margin: 0 25px;
     position: relative;
 
+    @media(max-width: 576px) {
+      margin: 0 15px;
+    }
+
     &-count {
       @include montserrat-500;
       position: absolute;

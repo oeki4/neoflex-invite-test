@@ -3,7 +3,7 @@ import "../assets/scss/components/logo.scss";
 
 const Logo = () => {
   return (
-    <NavLink className={"logo"} to={"/"}>
+    <NavLink className="logo" to={"/"}>
       QPICK
     </NavLink>
   );

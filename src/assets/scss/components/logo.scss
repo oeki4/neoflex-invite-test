@@ -7,6 +7,10 @@
   color: $logo;
   transition: .3s;
 
+  @media(max-width: 576px) {
+    font-size: 22px;
+  }
+
   &:hover {
     color: $logoHover;
   }

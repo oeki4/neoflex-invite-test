@@ -45,6 +45,10 @@
     justify-content: center;
     margin-bottom: 50px;
     max-height: 200px;
+
+    @media(max-width: 576px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__img {
@@ -84,6 +88,10 @@
     grid-area: price;
     text-align: right;
     position: relative;
+
+    @media(max-width: 576px) {
+      font-size: 15px;
+    }
   }
 
   &__discount {
@@ -113,6 +121,10 @@
     white-space: nowrap;
     text-align: left;
     margin-left: 10px;
+
+    @media(max-width: 576px) {
+      font-size: 15px;
+    }
   }
 
   &__buy-btn {

@@ -52,6 +52,14 @@
     color: $footer-link;
     transition: .3s;
 
+    @media(max-width: 768px) {
+      font-size: 15px;
+    }
+
+    @media(max-width: 576px) {
+      font-size: 14px;
+    }
+
     &:hover {
       color: $footer-link-hover;
     }
