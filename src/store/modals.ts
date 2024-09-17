@@ -8,6 +8,11 @@ class ModalsStore {
 
   togglePaymentModal = () => {
     this.paymentModalActive = !this.paymentModalActive;
+    if (!this.paymentModalActive) {
+      document.body.style.overflow = "unset";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
   };
 }
 
