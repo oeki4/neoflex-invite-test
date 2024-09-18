@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import { useEffect } from "react";
 import paymentMethods from "./../mocks/payment-methods.json";
 import PaymentModal from "../components/Modals/PaymentModal.tsx";
+import Button from "../components/UI/Button.tsx";
 
 const Basket = observer(() => {
   const { basketStore, modalsStore } = useStore();
@@ -72,12 +73,9 @@ const Basket = observer(() => {
               <p className="order__info-text">Итого</p>
               <p className="order__info-price">₽ {basketStore.resultPrice}</p>
             </div>
-            <button
-              onClick={() => modalsStore.togglePaymentModal()}
-              className="order__btn"
-            >
+            <Button onClick={modalsStore.togglePaymentModal}>
               Перейти к оформлению
-            </button>
+            </Button>
           </div>
         </div>
       </section>

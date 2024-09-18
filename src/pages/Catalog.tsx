@@ -9,7 +9,8 @@ import { observer } from "mobx-react";
 
 const Catalog = observer(() => {
   const { basketStore, modalsStore } = useStore();
-  const addToBasket = (product: Product) => {
+  const addToBasket = (product: Product | null) => {
+    if (!product) return;
     const basket = localStorage.getItem("basket");
     if (basket == null) {
       const basketJson = [];

@@ -55,7 +55,7 @@
     padding: 13px;
     box-sizing: border-box;
     border-radius: 20px;
-    border: 2px solid #8A8A8A;
+    border: 2px solid $payment-input-border;
     outline: none;
     transition: .3s;
     margin-bottom: 20px;
@@ -63,16 +63,41 @@
     &::placeholder {
       @include montserrat-600;
       font-size: 12px;
-      color: #8A8A8A;
+      color: $payment-input-border;
     }
 
     &:hover {
-      border-color: #252525;
+      border-color: $payment-input-border-focus;
     }
 
     &:focus {
-      border-color: #252525;
+      border-color: $payment-input-border-focus;
     }
+
+    &--error {
+      margin-bottom: 5px;
+      border: 2px solid $payment-input-border-error;
+      color: $payment-input-border-error;
+
+      &::placeholder {
+        color: $payment-input-border-error;
+      }
+
+      &:hover {
+        border-color: $payment-input-border-error;
+      }
+
+      &:focus {
+        border-color: $payment-input-border-error;
+      }
+    }
+  }
+
+  &__error {
+    @include montserrat-500;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: $payment-error;
   }
 
   &__payment-methods {
@@ -96,32 +121,11 @@
   }
 
   &__payment-img {
-    border: 3px solid #CCCCCC;
+    border: 3px solid $payment-method-img-border;
   }
 
-  &__submit-btn {
-    display: block;
-    width: 100%;
-    padding: 20px 0;
-    background: $basket-btn-bg;
-    @include montserrat-600;
-    font-size: 17px;
-    color: #ffffff;
-    white-space: nowrap;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
+  &__btn-wrapper {
     margin-top: 30px;
-    text-align: center;
-    text-decoration: none;
-
-    &:hover {
-      background-color: #313131;
-    }
-
-
   }
 }
 
@@ -146,16 +150,16 @@
   }
 
   &__item-img {
-    border: 3px solid #CCCCCC;
+    border: 3px solid $payment-method-img-border;
     border-radius: 15px;
     transition: .3s;
 
     &--selected {
-      border-color: #252525;
+      border-color: $payment-method-img-border-focus;
     }
 
     &:hover {
-      border-color: #252525;
+      border-color: $payment-method-img-border-focus;
     }
   }
 }

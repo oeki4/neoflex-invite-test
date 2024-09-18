@@ -2,6 +2,7 @@ import "../../assets/scss/components/modals/product.scss";
 import Star from "../Icons/Star.tsx";
 import Cross from "../Icons/Cross.tsx";
 import { Product } from "../../types/pages/catalog.types.ts";
+import Button from "../UI/Button.tsx";
 
 const ProductModal = ({
   isActive,
@@ -12,7 +13,7 @@ const ProductModal = ({
   isActive: boolean;
   toggleIsActive: (product: Product | null) => void;
   product: Product | null;
-  addToBasket: (product: Product) => void;
+  addToBasket: (product: Product | null) => void;
 }) => {
   return (
     <>
@@ -47,12 +48,7 @@ const ProductModal = ({
                     <p className="product__price">{product?.price} ₽</p>
                   )}
                 </div>
-                <button
-                  onClick={() => product && addToBasket(product)}
-                  className="product__buy-btn"
-                >
-                  В корзину
-                </button>
+                <Button onClick={() => addToBasket(product)}>В корзину</Button>
               </div>
             </div>
             <h3 className="product__title product__title--mb10">Описание</h3>
@@ -66,9 +62,13 @@ const ProductModal = ({
               {product?.characteristics ? (
                 product?.characteristics.map((item, index) => (
                   <li key={index} className="characteristics__item">
-                    <p className="product__text">{item.name}</p>
+                    <p className="product__text product__text--name">
+                      {item.name}
+                    </p>
                     <div className="characteristics__line"></div>
-                    <p className="product__text">{item.value}</p>
+                    <p className="product__text product__text--value">
+                      {item.value}
+                    </p>
                   </li>
                 ))
               ) : (

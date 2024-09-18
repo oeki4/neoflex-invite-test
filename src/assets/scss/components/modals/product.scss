@@ -30,7 +30,7 @@
   opacity: 1;
   max-width: 660px;
   padding: 30px;
-  background-color: #ffffff;
+  background-color: $product-modal-bg;
   border-radius: 30px;
   width: 100%;
   position: relative;
@@ -106,7 +106,7 @@
   &__title {
     @include montserrat-600;
     font-size: 20px;
-    color: #1C1C27;
+    color: $product-modal-title;
     white-space: nowrap;
 
     @media(max-width: 576px) {
@@ -166,32 +166,19 @@
     }
   }
 
-  &__buy-btn {
-    width: 100%;
-    padding: 20px 0;
-    background: $basket-btn-bg;
-    @include montserrat-600;
-    font-size: 17px;
-    color: #ffffff;
-    white-space: nowrap;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-
-    &:hover {
-      background-color: $basket-btn-bg-hover;
-    }
-  }
-
   &__text {
     @include montserrat-500;
     font-size: 14px;
-    color: #747474;
+    color: $product-modal-text;
     margin: 0;
     line-height: normal;
     white-space: nowrap;
+    display: flex;
+    align-items: end;
+
+    @media(max-width: 440px) {
+      white-space: wrap;
+    }
 
     &--mb10 {
       margin-bottom: 10px;
@@ -210,16 +197,11 @@
     width: 100%;
     display: grid;
     grid-template-columns: min-content auto min-content;
-    margin-bottom: 5px;
-
-    @media(max-width: 440px) {
-      grid-template-columns: min-content auto;
-      grid-template-rows: min-content min-content;
-    }
+    margin-bottom: 10px;
   }
 
   &__line {
-    border-bottom: 1px dashed #747474;
+    border-bottom: 1px dashed $product-modal-line;
     margin-bottom: 3px;
   }
 }

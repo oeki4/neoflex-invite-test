@@ -1,0 +1,28 @@
+@import '../../main';
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 20px 0;
+  background: $basket-btn-bg;
+  @include montserrat-600;
+  font-size: 17px;
+  color: #ffffff;
+  white-space: nowrap;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #313131;
+  }
+
+  &:disabled:hover {
+    background: $basket-btn-bg;
+    color: #ffffff;
+  }
+}

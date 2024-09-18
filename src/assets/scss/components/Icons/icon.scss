@@ -1,4 +1,4 @@
-@import '../main';
+@import '../../main';
 
 .header-icon {
   path {
@@ -10,7 +10,7 @@
   }
 
   &:hover path {
-    fill: $headerLinkHover;
+    fill: $header-link-hover;
   }
 }
 
@@ -35,7 +35,7 @@
   }
 
   &:hover g path {
-    fill: #CACACA;
+    fill: $product-info-icon-hover;
   }
 }
 
@@ -49,6 +49,6 @@
   }
 
   &:hover path {
-    fill: $social-link-hover;
+    fill: $social-link-icon-hover;
   }
 }

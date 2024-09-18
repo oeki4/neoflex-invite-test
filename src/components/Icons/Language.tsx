@@ -1,4 +1,4 @@
-import "../../assets/scss/components/icon.scss";
+import "../../assets/scss/components/Icons/icon.scss";
 
 const Language = () => {
   return (

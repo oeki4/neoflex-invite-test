@@ -1,7 +1,14 @@
 import "../../assets/scss/components/modals/payment.scss";
-import { NavLink } from "react-router-dom";
 import Cross from "../Icons/Cross.tsx";
 import { PaymentMethod } from "../../types/pages/basket.types.ts";
+import Button from "../UI/Button.tsx";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+type FormInputs = {
+  email: string;
+};
 
 const PaymentModal = ({
   isActive,
@@ -18,11 +25,32 @@ const PaymentModal = ({
   setSelectedPaymentMethod: (method: PaymentMethod) => void;
   selectedPaymentMethod: PaymentMethod | null;
 }) => {
+  const validationSchema = yup
+    .object()
+    .shape({
+      email: yup
+        .string()
+        .email("Некорректный email")
+        .required("Поле обязательно для ввода"),
+    })
+    .required();
+
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm<FormInputs>({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = () => console.log("Submitted!");
+
   return (
     <>
       {isActive ? (
         <div className="wrapper">
-          <div className="payment">
+          <form onSubmit={handleSubmit(onSubmit)} className="payment">
             <button
               onClick={() => toggleIsActive()}
               className="payment__close-btn"
@@ -32,7 +60,18 @@ const PaymentModal = ({
 
             <h2 className="payment__title">Оплата заказа №223</h2>
             <p className="payment__text">Введите вашу электронную почту</p>
-            <input type="text" placeholder="Email" className="payment__input" />
+            <input
+              type="text"
+              {...register("email")}
+              onInput={() => trigger("email")}
+              placeholder="Email"
+              className={`payment__input ${errors.email ? "payment__input--error" : ""}`}
+            />
+            {errors.email?.message ? (
+              <p className="payment__error">{errors.email?.message}</p>
+            ) : (
+              <></>
+            )}
             <p className="payment__text">Способы оплаты</p>
             <ul className="methods">
               {paymentMethods.map((el, index) => (
@@ -60,14 +99,16 @@ const PaymentModal = ({
               <span className="payment__text">К оплате</span>
               <span className="payment__text">₽ {resultPrice}</span>
             </div>
-            <NavLink
-              to={"/"}
-              onClick={() => toggleIsActive()}
-              className="payment__submit-btn"
-            >
-              Перейти к оплате
-            </NavLink>
-          </div>
+            <div className="payment__btn-wrapper">
+              <Button
+                disabled={!!errors?.email || !selectedPaymentMethod?.id}
+                submit
+                onClick={toggleIsActive}
+              >
+                Перейти к оплате
+              </Button>
+            </div>
+          </form>
         </div>
       ) : (
         <></>
