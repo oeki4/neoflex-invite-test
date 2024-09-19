@@ -6,9 +6,11 @@ import { useEffect } from "react";
 import paymentMethods from "./../mocks/payment-methods.json";
 import PaymentModal from "../components/Modals/PaymentModal.tsx";
 import Button from "../components/UI/Button.tsx";
+import { useTranslation } from "react-i18next";
 
 const Basket = observer(() => {
   const { basketStore, modalsStore } = useStore();
+  const { t } = useTranslation();
 
   const setBasketItemAmount = (id: number, value: number) => {
     if (value < 1) {
@@ -56,7 +58,7 @@ const Basket = observer(() => {
   return (
     <>
       <section className="basket">
-        <h2 className="basket__subtitle">Корзина</h2>
+        <h2 className="basket__subtitle">{t("Basket")}</h2>
         <div className="basket__inner">
           <div className="basket__inner-cards">
             {basketStore.basketProducts.map((product, id) => (
@@ -70,11 +72,11 @@ const Basket = observer(() => {
           </div>
           <div className="order">
             <div className="order__info">
-              <p className="order__info-text">Итого</p>
+              <p className="order__info-text">{t("Total")}</p>
               <p className="order__info-price">₽ {basketStore.resultPrice}</p>
             </div>
             <Button onClick={modalsStore.togglePaymentModal}>
-              Перейти к оформлению
+              {t("Go to checkout")}
             </Button>
           </div>
         </div>

@@ -12,12 +12,17 @@
 
 .payment {
   opacity: 1;
-  max-width: 360px;
+  max-width: 420px;
   padding: 30px;
   background-color: $payment-bg;
   border-radius: 30px;
   width: 100%;
   position: relative;
+  box-sizing: border-box;
+
+  @media(max-width: 576px) {
+    width: 95%;
+  }
 
   &__close-btn {
     position: absolute;
@@ -135,7 +140,7 @@
   grid-template-columns: repeat(auto-fill, minmax(50px, 70px));
   grid-template-rows: repeat(auto-fill, 50px);
   justify-items: center;
-  grid-row-gap: 10px;
+  grid-row-gap: 15px;
   margin-bottom: 20px;
 
   &__item-btn {

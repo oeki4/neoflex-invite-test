@@ -3,6 +3,7 @@ import Star from "../Icons/Star.tsx";
 import Cross from "../Icons/Cross.tsx";
 import { Product } from "../../types/pages/catalog.types.ts";
 import Button from "../UI/Button.tsx";
+import { useTranslation } from "react-i18next";
 
 const ProductModal = ({
   isActive,
@@ -15,6 +16,7 @@ const ProductModal = ({
   product: Product | null;
   addToBasket: (product: Product | null) => void;
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       {isActive ? (
@@ -48,15 +50,19 @@ const ProductModal = ({
                     <p className="product__price">{product?.price} ₽</p>
                   )}
                 </div>
-                <Button onClick={() => addToBasket(product)}>В корзину</Button>
+                <Button onClick={() => addToBasket(product)}>
+                  {t("Add to cart")}
+                </Button>
               </div>
             </div>
-            <h3 className="product__title product__title--mb10">Описание</h3>
+            <h3 className="product__title product__title--mb10">
+              {t("Description")}
+            </h3>
             <p className="product__text product__text--wrap product__text--mb10">
               {product?.description}
             </p>
             <h3 className="product__title product__title--mb10">
-              Характеристики
+              {t("Characteristics")}
             </h3>
             <ul className="characteristics">
               {product?.characteristics ? (

@@ -1,0 +1,22 @@
+{
+  "Buy": "Купить",
+  "Favorites": "Избранное",
+  "Basket": "Корзина",
+  "Contacts": "Контакты",
+  "Terms of service": "Условия сервиса",
+  "Headphones": "Наушники",
+  "Add to cart": "В корзину",
+  "Description": "Описание",
+  "Characteristics": "Характеристики",
+  "Total": "Итого",
+  "Go to checkout": "Перейти к оформлению",
+  "Order №{{num}}": "Заказ №{{num}}",
+  "Enter your email": "Введите вашу электронную почту",
+  "Invalid email address": "Некорректный Email",
+  "This field is required": "Поле обязательно для ввода",
+  "Payment methods": "Способы оплаты",
+  "Payment method": "Способ оплаты",
+  "Not selected": "Не выбран",
+  "For payment": "К оплате",
+  "Proceed to payment": "Перейти к оплате"
+}

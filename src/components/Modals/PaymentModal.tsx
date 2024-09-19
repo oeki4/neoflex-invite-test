@@ -5,6 +5,7 @@ import Button from "../UI/Button.tsx";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useTranslation } from "react-i18next";
 
 type FormInputs = {
   email: string;
@@ -25,13 +26,15 @@ const PaymentModal = ({
   setSelectedPaymentMethod: (method: PaymentMethod) => void;
   selectedPaymentMethod: PaymentMethod | null;
 }) => {
+  const { t } = useTranslation();
+
   const validationSchema = yup
     .object()
     .shape({
       email: yup
         .string()
-        .email("Некорректный email")
-        .required("Поле обязательно для ввода"),
+        .email(t("Invalid email address"))
+        .required(t("This field is required")),
     })
     .required();
 
@@ -58,8 +61,12 @@ const PaymentModal = ({
               <Cross />
             </button>
 
-            <h2 className="payment__title">Оплата заказа №223</h2>
-            <p className="payment__text">Введите вашу электронную почту</p>
+            <h2 className="payment__title">
+              {t("Order №{{num}}", {
+                num: 223,
+              })}
+            </h2>
+            <p className="payment__text">{t("Enter your email")}</p>
             <input
               type="text"
               {...register("email")}
@@ -72,7 +79,7 @@ const PaymentModal = ({
             ) : (
               <></>
             )}
-            <p className="payment__text">Способы оплаты</p>
+            <p className="payment__text">{t("Payment methods")}</p>
             <ul className="methods">
               {paymentMethods.map((el, index) => (
                 <li key={index}>
@@ -90,13 +97,13 @@ const PaymentModal = ({
               ))}
             </ul>
             <div className="payment__text-between">
-              <span className="payment__text">Способ оплаты</span>
+              <span className="payment__text">{t("Payment method")}</span>
               <span className="payment__text">
-                {selectedPaymentMethod?.name || "Не выбран"}
+                {selectedPaymentMethod?.name || t("Not selected")}
               </span>
             </div>
             <div className="payment__text-between">
-              <span className="payment__text">К оплате</span>
+              <span className="payment__text">{t("For payment")}</span>
               <span className="payment__text">₽ {resultPrice}</span>
             </div>
             <div className="payment__btn-wrapper">
@@ -105,7 +112,7 @@ const PaymentModal = ({
                 submit
                 onClick={toggleIsActive}
               >
-                Перейти к оплате
+                {t("Proceed to payment")}
               </Button>
             </div>
           </form>

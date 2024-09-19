@@ -6,8 +6,10 @@ import Telegram from "./Icons/Telegram.tsx";
 import Whatsapp from "./Icons/Whatsapp.tsx";
 import { NavLink } from "react-router-dom";
 import LangSwitch from "./LangSwitch.tsx";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="footer">
       <div className="logo--footer">
@@ -16,42 +18,62 @@ const Footer = () => {
       <div className="footer__links">
         <ul className="footer__links-list">
           <li className="footer__links-item">
-            <NavLink className="footer__links-link" to="/">
-              Избранное
+            <NavLink className="footer__links-link" to={"/basket"}>
+              {t("Favorites")}
             </NavLink>
           </li>
           <li className="footer__links-item">
-            <NavLink className="footer__links-link" to="/">
-              Корзина
+            <NavLink className="footer__links-link" to={"/basket"}>
+              {t("Basket")}
             </NavLink>
           </li>
           <li className="footer__links-item">
-            <NavLink className="footer__links-link" to="/">
-              Контакты
-            </NavLink>
+            <a
+              target={"_blank"}
+              className="footer__links-link"
+              href={"https://oeki.ru"}
+            >
+              {t("Contacts")}
+            </a>
           </li>
         </ul>
       </div>
       <div className="footer__service-lang">
         <ul className="footer__links-list">
           <li className="footer__links-item">
-            <NavLink className="footer__links-link" to="/">
-              Условия сервиса
-            </NavLink>
+            <a
+              className="footer__links-link"
+              target={"_blank"}
+              href={"https://oeki.ru"}
+            >
+              {t("Terms of service")}
+            </a>
           </li>
         </ul>
         <LangSwitch />
       </div>
       <div className="footer__social-links">
-        <NavLink className="footer__social-link" to="/">
+        <a
+          target={"_blank"}
+          className="footer__social-link"
+          href={"https://vk.com/neoflex_ru"}
+        >
           <VK />
-        </NavLink>
-        <NavLink className="footer__social-link" to="/">
+        </a>
+        <a
+          target={"_blank"}
+          className="footer__social-link"
+          href={"https://t.me/oeki4"}
+        >
           <Telegram />
-        </NavLink>
-        <NavLink className="footer__social-link" to="/">
+        </a>
+        <a
+          target={"_blank"}
+          className="footer__social-link"
+          href="tel:74959842513"
+        >
           <Whatsapp />
-        </NavLink>
+        </a>
       </div>
     </footer>
   );

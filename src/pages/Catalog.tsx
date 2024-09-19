@@ -6,8 +6,10 @@ import { BasketProduct } from "../types/store/basket.types.ts";
 import { Product } from "../types/pages/catalog.types.ts";
 import ProductModal from "../components/Modals/ProductModal.tsx";
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
 const Catalog = observer(() => {
+  const { t } = useTranslation();
   const { basketStore, modalsStore } = useStore();
   const addToBasket = (product: Product | null) => {
     if (!product) return;
@@ -49,7 +51,7 @@ const Catalog = observer(() => {
   return (
     <>
       <section className="catalog">
-        <h1 className="category__title">Наушники</h1>
+        <h1 className="category__title">{t("Headphones")}</h1>
         <div className="category">
           <div className="category__items">
             {products.map((product) => (

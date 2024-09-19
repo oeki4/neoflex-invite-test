@@ -2,6 +2,7 @@ import "../assets/scss/components/product-card.scss";
 import Star from "./Icons/Star.tsx";
 import Eye from "./Icons/Eye.tsx";
 import { Product } from "../types/pages/catalog.types.ts";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({
   product,
@@ -12,6 +13,7 @@ const ProductCard = ({
   toggleProductModal: (product: Product | null) => void;
   addToBasket: (product: Product) => void;
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="product-card">
       <span
@@ -45,7 +47,7 @@ const ProductCard = ({
           onClick={() => addToBasket(product)}
           className="product-card__buy-btn"
         >
-          Купить
+          {t("Buy")}
         </button>
       </div>
     </div>
