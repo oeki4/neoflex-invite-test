@@ -1,17 +1,17 @@
 import "../assets/scss/components/basket-card.scss";
 import Trash from "./Icons/Trash.tsx";
 import WhiteTrash from "./Icons/WhiteTrash.tsx";
-import { BasketProduct } from "../types/store/basket.types.ts";
+import { priceNumToStr } from "../helpers/lang.ts";
+import { useTranslation } from "react-i18next";
+import { BasketCardProps } from "../types/components.types.ts";
 
 const BasketCard = ({
   product,
   setBasketItemAmount,
   deleteItemFromBasket,
-}: {
-  product: BasketProduct;
-  setBasketItemAmount: (id: number, value: number) => void;
-  deleteItemFromBasket: (id: number) => void;
-}) => {
+  currencyRate,
+}: BasketCardProps) => {
+  const { t } = useTranslation();
   return (
     <div className="card">
       <div className="card__info">
@@ -26,11 +26,18 @@ const BasketCard = ({
           <p className="card__desc-name">{product.title}</p>
           <p className="price">
             {product.priceWithDiscount
-              ? product.priceWithDiscount
-              : product.price}{" "}
-            ₽
+              ? t("${{num}}", {
+                  num: priceNumToStr(product?.priceWithDiscount * currencyRate),
+                })
+              : t("${{num}}", {
+                  num: priceNumToStr(product?.price * currencyRate),
+                })}
             {product.priceWithDiscount ? (
-              <span className="discount">{product.price} ₽ </span>
+              <span className="discount">
+                {t("${{num}}", {
+                  num: priceNumToStr(product?.price * currencyRate),
+                })}
+              </span>
             ) : (
               ""
             )}
@@ -58,12 +65,23 @@ const BasketCard = ({
           </div>
           <p className="price price--result">
             {product.priceWithDiscount
-              ? product.priceWithDiscount * product.amount
-              : product.price * product.amount}{" "}
-            ₽
+              ? t("${{num}}", {
+                  num: priceNumToStr(
+                    product.priceWithDiscount * product.amount * currencyRate,
+                  ),
+                })
+              : t("${{num}}", {
+                  num: priceNumToStr(
+                    product.price * product.amount * currencyRate,
+                  ),
+                })}
             {product.priceWithDiscount ? (
               <span className="discount discount--result">
-                {product.price * product.amount} ₽{" "}
+                {t("${{num}}", {
+                  num: priceNumToStr(
+                    product.price * product.amount * currencyRate,
+                  ),
+                })}
               </span>
             ) : (
               ""

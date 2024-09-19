@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const Catalog = observer(() => {
   const { t } = useTranslation();
-  const { basketStore, modalsStore } = useStore();
+  const { basketStore, modalsStore, userStore } = useStore();
   const addToBasket = (product: Product | null) => {
     if (!product) return;
     const basket = localStorage.getItem("basket");
@@ -60,6 +60,7 @@ const Catalog = observer(() => {
                 key={product.id}
                 product={product}
                 toggleProductModal={modalsStore.toggleProductModal}
+                currencyRate={userStore.lang?.currencyRate || 1}
               />
             ))}
           </div>
@@ -70,6 +71,7 @@ const Catalog = observer(() => {
         isActive={modalsStore.productModalActive}
         addToBasket={addToBasket}
         toggleIsActive={modalsStore.toggleProductModal}
+        currencyRate={userStore.lang?.currencyRate || 1}
       />
     </>
   );

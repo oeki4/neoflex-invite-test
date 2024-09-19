@@ -1,17 +1,12 @@
 import "../../assets/scss/components/UI/button.scss";
-import { ReactNode } from "react";
+import { ButtonProps } from "../../types/ui.types.ts";
 
 const Button = ({
   children,
   onClick,
   submit = false,
   disabled = false,
-}: {
-  children: ReactNode;
-  onClick?: () => void;
-  submit?: boolean;
-  disabled?: boolean;
-}) => {
+}: ButtonProps) => {
   return (
     <button
       type={submit ? "submit" : "button"}

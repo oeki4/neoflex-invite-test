@@ -1,11 +1,12 @@
 import "../../assets/scss/components/modals/payment.scss";
 import Cross from "../Icons/Cross.tsx";
-import { PaymentMethod } from "../../types/pages/basket.types.ts";
 import Button from "../UI/Button.tsx";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
+import { priceNumToStr } from "../../helpers/lang.ts";
+import { PaymentModalProps } from "../../types/modals.types.ts";
 
 type FormInputs = {
   email: string;
@@ -18,14 +19,8 @@ const PaymentModal = ({
   paymentMethods,
   setSelectedPaymentMethod,
   selectedPaymentMethod,
-}: {
-  isActive: boolean;
-  toggleIsActive: () => void;
-  resultPrice: number;
-  paymentMethods: PaymentMethod[];
-  setSelectedPaymentMethod: (method: PaymentMethod) => void;
-  selectedPaymentMethod: PaymentMethod | null;
-}) => {
+  currencyRate,
+}: PaymentModalProps) => {
   const { t } = useTranslation();
 
   const validationSchema = yup
@@ -104,7 +99,11 @@ const PaymentModal = ({
             </div>
             <div className="payment__text-between">
               <span className="payment__text">{t("For payment")}</span>
-              <span className="payment__text">₽ {resultPrice}</span>
+              <span className="payment__text">
+                {t("${{num}}", {
+                  num: priceNumToStr(resultPrice * currencyRate),
+                })}
+              </span>
             </div>
             <div className="payment__btn-wrapper">
               <Button

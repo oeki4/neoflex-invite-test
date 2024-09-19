@@ -1,21 +1,18 @@
 import "../../assets/scss/components/modals/product.scss";
 import Star from "../Icons/Star.tsx";
 import Cross from "../Icons/Cross.tsx";
-import { Product } from "../../types/pages/catalog.types.ts";
 import Button from "../UI/Button.tsx";
 import { useTranslation } from "react-i18next";
+import { priceNumToStr } from "../../helpers/lang.ts";
+import { ProductModalProps } from "../../types/modals.types.ts";
 
 const ProductModal = ({
   isActive,
   toggleIsActive,
   product,
   addToBasket,
-}: {
-  isActive: boolean;
-  toggleIsActive: (product: Product | null) => void;
-  product: Product | null;
-  addToBasket: (product: Product | null) => void;
-}) => {
+  currencyRate,
+}: ProductModalProps) => {
   const { t } = useTranslation();
   return (
     <>
@@ -41,13 +38,25 @@ const ProductModal = ({
                   </div>
                   {product?.priceWithDiscount ? (
                     <p className="product__price">
-                      {product?.priceWithDiscount} ₽
+                      {t("${{num}}", {
+                        num: priceNumToStr(
+                          product?.priceWithDiscount * currencyRate,
+                        ),
+                      })}
                       <span className="product__discount">
-                        {product?.price} ₽
+                        {t("${{num}}", {
+                          num: priceNumToStr(product?.price * currencyRate),
+                        })}
                       </span>
                     </p>
                   ) : (
-                    <p className="product__price">{product?.price} ₽</p>
+                    <p className="product__price">
+                      {t("${{num}}", {
+                        num: priceNumToStr(
+                          (product?.price || 0) * currencyRate,
+                        ),
+                      })}
+                    </p>
                   )}
                 </div>
                 <Button onClick={() => addToBasket(product)}>

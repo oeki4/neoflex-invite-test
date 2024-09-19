@@ -7,9 +7,10 @@ import paymentMethods from "./../mocks/payment-methods.json";
 import PaymentModal from "../components/Modals/PaymentModal.tsx";
 import Button from "../components/UI/Button.tsx";
 import { useTranslation } from "react-i18next";
+import { priceNumToStr } from "../helpers/lang.ts";
 
 const Basket = observer(() => {
-  const { basketStore, modalsStore } = useStore();
+  const { basketStore, modalsStore, userStore } = useStore();
   const { t } = useTranslation();
 
   const setBasketItemAmount = (id: number, value: number) => {
@@ -67,13 +68,21 @@ const Basket = observer(() => {
                 deleteItemFromBasket={deleteItemFromBasket}
                 key={id}
                 product={product}
+                currencyRate={userStore.lang?.currencyRate || 1}
               />
             ))}
           </div>
           <div className="order">
             <div className="order__info">
               <p className="order__info-text">{t("Total")}</p>
-              <p className="order__info-price">₽ {basketStore.resultPrice}</p>
+              <p className="order__info-price">
+                {t("${{num}}", {
+                  num: priceNumToStr(
+                    basketStore.resultPrice *
+                      (userStore.lang?.currencyRate || 1),
+                  ),
+                })}
+              </p>
             </div>
             <Button onClick={modalsStore.togglePaymentModal}>
               {t("Go to checkout")}
@@ -88,6 +97,7 @@ const Basket = observer(() => {
         paymentMethods={paymentMethods}
         setSelectedPaymentMethod={modalsStore.setSelectedPaymentMethod}
         selectedPaymentMethod={modalsStore.selectedPaymentMethod}
+        currencyRate={userStore.lang?.currencyRate || 1}
       />
     </>
   );

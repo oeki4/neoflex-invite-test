@@ -18,5 +18,6 @@
   "Payment method": "Способ оплаты",
   "Not selected": "Не выбран",
   "For payment": "К оплате",
-  "Proceed to payment": "Перейти к оплате"
+  "Proceed to payment": "Перейти к оплате",
+  "${{num}}": "{{num}} ₽"
 }
