@@ -71,6 +71,13 @@ const Basket = observer(() => {
                 currencyRate={userStore.lang?.currencyRate || 1}
               />
             ))}
+            {!basketStore.basketProducts.length ? (
+              <h2 className="basket__subtitle basket__subtitle--mt30">
+                {t("There is nothing in the cart yet")}
+              </h2>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="order">
             <div className="order__info">

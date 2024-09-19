@@ -19,5 +19,6 @@
   "Not selected": "Не выбран",
   "For payment": "К оплате",
   "Proceed to payment": "Перейти к оплате",
-  "${{num}}": "{{num}} ₽"
+  "${{num}}": "{{num}} ₽",
+  "There is nothing in the cart yet": "В корзине пока ничего нет"
 }
