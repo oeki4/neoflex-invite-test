@@ -1,4 +1,5 @@
-@import '../main';
+@use '../mixins' as *;
+@use '../colors' as *;
 
 .footer {
   @include container;

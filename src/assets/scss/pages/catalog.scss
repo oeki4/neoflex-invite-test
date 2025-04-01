@@ -1,4 +1,5 @@
-@import '../main';
+@use '../colors' as *;
+@use '../mixins' as *;
 
 .catalog {
   @include container;

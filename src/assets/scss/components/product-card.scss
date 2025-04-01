@@ -1,4 +1,5 @@
-@import '../main';
+@use '../colors' as *;
+@use '../mixins' as *;
 
 .product-card {
   width: 350px;

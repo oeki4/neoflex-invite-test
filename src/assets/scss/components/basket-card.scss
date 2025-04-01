@@ -1,4 +1,5 @@
-@import '../main';
+@use '../colors' as *;
+@use '../mixins' as *;
 
 .card {
   width: 100%;

@@ -1,4 +1,5 @@
-@import "../main.scss";
+@use "../colors" as *;
+@use "../mixins" as *;
 
 .logo {
   @include montserrat-700;

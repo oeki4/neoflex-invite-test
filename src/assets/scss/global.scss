@@ -1,5 +1,5 @@
-@import "./main.scss";
+@use "colors";
 
 body {
-  background-color: $bg;
+  background-color: colors.$bg;
 }
