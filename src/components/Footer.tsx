@@ -5,8 +5,8 @@ import VK from "./Icons/VK.tsx";
 import Telegram from "./Icons/Telegram.tsx";
 import Whatsapp from "./Icons/Whatsapp.tsx";
 import { NavLink } from "react-router-dom";
-import LangSwitch from "./LangSwitch.tsx";
 import { useTranslation } from "react-i18next";
+import {LangSwitcher} from "@/widgets/LangSwitcher";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -50,7 +50,7 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        <LangSwitch />
+        <LangSwitcher />
       </div>
       <div className="footer__social-links">
         <a

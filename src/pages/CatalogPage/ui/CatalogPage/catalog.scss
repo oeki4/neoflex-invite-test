@@ -1,0 +1,31 @@
+@use '@/assets/scss/mixins' as *;
+@use '@/assets/scss/colors' as *;
+
+.catalog {
+  @include container;
+  min-height: 70vh;
+
+  @media(max-width: 576px) {
+    width: 85%;
+  }
+}
+
+.category {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__title {
+    @include montserrat-600;
+    font-size: 20px;
+    color: $category-title;
+    margin: 0 10px 20px;
+  }
+
+  &__items {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

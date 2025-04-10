@@ -18,7 +18,7 @@ const Router = observer(() => {
         localStorage.setItem("basket", JSON.stringify([]));
       }
     }
-  }, []);
+  }, [basketStore]);
   return (
     <div className="router">
       <Header />

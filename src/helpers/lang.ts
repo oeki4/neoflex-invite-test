@@ -1,4 +1,4 @@
-import { Lang } from "../types/helpers/lang.types.ts";
+import {Lang} from "@/shared/const/languages.ts";
 
 export const languages: Lang[] = [
   {

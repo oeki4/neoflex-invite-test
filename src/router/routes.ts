@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import Catalog from "../pages/Catalog.tsx";
 import Router from "./Router.tsx";
-import Basket from "../pages/Basket.tsx";
+import { BasketPage } from "@/pages/BasketPage";
+import {CatalogPage} from "@/pages/CatalogPage";
 
 const routes = createBrowserRouter([
   {
@@ -9,11 +9,11 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: Catalog,
+        Component: CatalogPage,
       },
       {
         path: "/basket",
-        Component: Basket,
+        Component: BasketPage,
       },
     ],
   },

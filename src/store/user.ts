@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { Lang } from "../types/helpers/lang.types.ts";
 import { languages } from "../helpers/lang.ts";
+import {Lang} from "@/shared/const/languages.ts";
 
 class UserStore {
   lang: Lang | null = languages[0];

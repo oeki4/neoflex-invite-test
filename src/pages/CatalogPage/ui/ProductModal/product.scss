@@ -1,0 +1,208 @@
+@use '@/assets/scss/mixins' as *;
+@use '@/assets/scss/colors' as *;
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  @media(max-height: 500px) {
+    min-height: 100vh;
+    overflow-y: scroll;
+    align-content: start;
+    padding: 30px 0 30px;
+    box-sizing: border-box;
+  }
+
+  @media(max-width: 576px) {
+    min-height: 100vh;
+    overflow-y: scroll;
+    align-content: start;
+    padding: 30px 0 30px;
+    box-sizing: border-box;
+  }
+}
+
+.product {
+  opacity: 1;
+  max-width: 660px;
+  padding: 30px;
+  background-color: $product-modal-bg;
+  border-radius: 30px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: auto;
+
+  @media(max-height: 500px) {
+    margin: auto;
+    max-width: 90%;
+  }
+
+  @media(max-width: 576px) {
+    max-width: 90%;
+    padding: 20px;
+    margin: auto;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+
+  &__photo-info {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    justify-items: start;
+    margin-bottom: 40px;
+
+
+    @media(max-width: 576px) {
+      flex-direction: column;
+    }
+  }
+
+  &__photo {
+    max-width: 200px;
+
+    & img {
+      max-width: 200px;
+    }
+
+    @media(max-width: 576px) {
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__info {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    justify-content: space-around;
+    width: 100%;
+
+    @media(max-width: 576px) {
+      margin-left: 0;
+    }
+  }
+
+  &__title {
+    @include montserrat-600;
+    font-size: 20px;
+    color: $product-modal-title;
+    white-space: nowrap;
+
+    @media(max-width: 576px) {
+      margin-bottom: 20px;
+    }
+
+    &--mb10 {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__rate {
+    display: flex;
+    align-items: center;
+
+    @media(max-width: 576px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__rate-value {
+    @include montserrat-600;
+    font-size: 17px;
+    color: $product-rate;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  &__rate-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__price {
+    @include montserrat-600;
+    font-size: 17px;
+    color: $product-price;
+    white-space: nowrap;
+    grid-area: price;
+    text-align: right;
+    position: relative;
+  }
+
+  &__discount {
+    @include montserrat-600;
+    font-size: 14px;
+    color: $product-discount;
+    position: absolute;
+    bottom: -50%;
+    right: 0;
+    text-decoration: line-through;
+
+    @media(max-width: 576px) {
+      bottom: 10%;
+    }
+  }
+
+  &__text {
+    @include montserrat-500;
+    font-size: 14px;
+    color: $product-modal-text;
+    margin: 0;
+    line-height: normal;
+    white-space: nowrap;
+    display: flex;
+    align-items: end;
+
+    @media(max-width: 440px) {
+      white-space: wrap;
+    }
+
+    &--mb10 {
+      margin-bottom: 10px;
+    }
+
+    &--wrap {
+      white-space: wrap;
+      line-height: 1.5;
+    }
+  }
+}
+
+.characteristics {
+  width: 100%;
+  &__item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    margin-bottom: 10px;
+  }
+
+  &__line {
+    border-bottom: 1px dashed $product-modal-line;
+    margin-bottom: 3px;
+  }
+}
