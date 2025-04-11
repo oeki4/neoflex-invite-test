@@ -1,4 +1,4 @@
-import "./payment.scss";
+import "./payment-modal.scss";
 import Cross from "@/shared/ui/icons/Cross.tsx";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";

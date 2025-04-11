@@ -1,8 +1,8 @@
 import {Header} from "@/shared/ui/Header/Header.tsx";
 import {Footer} from "@/shared/ui/Footer/Footer.tsx";
-import AppRouter from "@/app/providers/AppRouter/ui/AppRouter.tsx";
 import {useStore} from "@/store/store.ts";
 import {useEffect} from "react";
+import {AppRouter} from "@/app/providers/AppRouter";
 
 const App = () => {
 	const { basketStore } = useStore();

@@ -1,4 +1,4 @@
-import "./product.scss";
+import "./product-modal.scss";
 import { useTranslation } from "react-i18next";
 import {priceNumToStr} from "@/shared/lib/priceNumToStr.ts";
 import Button from "@/shared/ui/Button/Button.tsx";

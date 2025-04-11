@@ -1,4 +1,4 @@
-import "./lang-switch.scss";
+import "./lang-switcher.scss";
 import { useTranslation } from "react-i18next";
 import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";

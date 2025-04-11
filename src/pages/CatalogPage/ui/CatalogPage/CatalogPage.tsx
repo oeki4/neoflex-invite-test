@@ -1,5 +1,5 @@
 import {ProductCard} from "@/entities/Product";
-import "./catalog.scss";
+import "./catalog-page.scss";
 import products from "@/shared/mocks/products.json";
 import { useStore } from "@/store/store.ts";
 import ProductModal from "../ProductModal/ProductModal.tsx";

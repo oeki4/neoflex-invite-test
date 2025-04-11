@@ -1,4 +1,4 @@
-import "./basket.scss";
+import "./basket-page.scss";
 import BasketCard from "@/entities/Basket/ui/BasketCard/BasketCard.tsx";
 import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";
