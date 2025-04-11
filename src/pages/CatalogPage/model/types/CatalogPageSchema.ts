@@ -1,3 +1,6 @@
+import { Product } from "@/entities/Product";
+
 export interface CatalogPageSchema {
-	productModalActive: boolean;
+  productModalActive: boolean;
+  selectedProduct?: Product;
 }

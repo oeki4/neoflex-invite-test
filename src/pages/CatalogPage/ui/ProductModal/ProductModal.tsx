@@ -1,109 +1,96 @@
-import "./product-modal.scss";
+import styles from "./product-modal.module.scss";
 import { useTranslation } from "react-i18next";
-import {priceNumToStr} from "@/shared/lib/priceNumToStr.ts";
+import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
 import Button from "@/shared/ui/Button/Button.tsx";
 import Star from "@/shared/ui/icons/Star.tsx";
 import Cross from "@/shared/ui/icons/Cross.tsx";
-import { Product } from "@/entities/Product";
+// import { Product } from "@/entities/Product";
+import { useCallback } from "react";
+import { catalogPageSliceActions } from "@/pages/CatalogPage";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
+import { getSelectedProduct } from "../../model/selectors/selectedProductSelector.ts";
 
 interface ProductModalProps {
-	isActive: boolean;
-	toggleIsActive: (product: Product | null) => void;
-	product: Product | null;
-	addToBasket: (product: Product | null) => void;
-	currencyRate: number;
+  // addToBasket: (product: Product | null) => void;
+  currencyRate: number;
 }
 
-const ProductModal = ({
-  isActive,
-  toggleIsActive,
-  product,
-  addToBasket,
-  currencyRate,
-}: ProductModalProps) => {
+const ProductModal = ({ currencyRate }: ProductModalProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const product = useAppSelector(getSelectedProduct);
+  const onCloseProductModal = useCallback(() => {
+    dispatch(catalogPageSliceActions.hideProductModal());
+  }, [dispatch]);
   return (
-    <>
-      {isActive ? (
-        <div className="wrapper">
-          <div className="product">
-            <button
-              onClick={() => toggleIsActive(null)}
-              className="product__close-btn"
-            >
-              <Cross />
-            </button>
-            <div className="product__photo-info">
-              <div className="product__photo">
-                <img src={`/img/products/${product?.photo}`} alt="" />
+    <div className={styles.wrapper}>
+      <div className={styles.product}>
+        <button
+          onClick={onCloseProductModal}
+          className={styles.productCloseBtn}
+        >
+          <Cross />
+        </button>
+        <div className={styles.productPhotoInfo}>
+          <div className={styles.productPhoto}>
+            <img src={`/img/products/${product?.photo}`} alt="" />
+          </div>
+          <div className={styles.productInfo}>
+            <h2 className={styles.productTitle}>{product?.title}</h2>
+            <div className={styles.productRatePrice}>
+              <div className={styles.productRate}>
+                <Star />
+                <p className={styles.productRateValue}>{product?.rate}</p>
               </div>
-              <div className="product__info">
-                <h2 className="product__title">{product?.title}</h2>
-                <div className="product__rate-price">
-                  <div className="product__rate">
-                    <Star />
-                    <p className="product__rate-value">{product?.rate}</p>
-                  </div>
-                  {product?.priceWithDiscount ? (
-                    <p className="product__price">
-                      {t("${{num}}", {
-                        num: priceNumToStr(
-                          product?.priceWithDiscount * currencyRate,
-                        ),
-                      })}
-                      <span className="product__discount">
-                        {t("${{num}}", {
-                          num: priceNumToStr(product?.price * currencyRate),
-                        })}
-                      </span>
-                    </p>
-                  ) : (
-                    <p className="product__price">
-                      {t("${{num}}", {
-                        num: priceNumToStr(
-                          (product?.price || 0) * currencyRate,
-                        ),
-                      })}
-                    </p>
-                  )}
-                </div>
-                <Button onClick={() => addToBasket(product)}>
-                  {t("Add to cart")}
-                </Button>
-              </div>
-            </div>
-            <h3 className="product__title product__title--mb10">
-              {t("Description")}
-            </h3>
-            <p className="product__text product__text--wrap product__text--mb10">
-              {product?.description}
-            </p>
-            <h3 className="product__title product__title--mb10">
-              {t("Characteristics")}
-            </h3>
-            <ul className="characteristics">
-              {product?.characteristics ? (
-                product?.characteristics.map((item, index) => (
-                  <li key={index} className="characteristics__item">
-                    <p className="product__text product__text--name">
-                      {item.name}
-                    </p>
-                    <div className="characteristics__line"></div>
-                    <p className="product__text product__text--value">
-                      {item.value}
-                    </p>
-                  </li>
-                ))
+              {product?.priceWithDiscount ? (
+                <p className={styles.productPrice}>
+                  {t("${{num}}", {
+                    num: priceNumToStr(
+                      product?.priceWithDiscount * currencyRate,
+                    ),
+                  })}
+                  <span className={styles.productDiscount}>
+                    {t("${{num}}", {
+                      num: priceNumToStr(product?.price * currencyRate),
+                    })}
+                  </span>
+                </p>
               ) : (
-                <></>
+                <p className={styles.productPrice}>
+                  {t("${{num}}", {
+                    num: priceNumToStr((product?.price || 0) * currencyRate),
+                  })}
+                </p>
               )}
-            </ul>
+            </div>
+            {/*<Button onClick={() => addToBasket(product)}>*/}
+            <Button>{t("Add to cart")}</Button>
           </div>
         </div>
-      ) : (
-        <></>
-      )}
-    </>
+        <h3 className={`${styles.productTitle} ${styles.productTitleMb10}`}>
+          {t("Description")}
+        </h3>
+        <p
+          className={`${styles.productText} ${styles.productTextWrap} ${styles.productTextMb10}`}
+        >
+          {product?.description}
+        </p>
+        <h3 className={`${styles.productTitle} ${styles.productTitleMb10}`}>
+          {t("Characteristics")}
+        </h3>
+        <ul className={styles.characteristics}>
+          {product?.characteristics &&
+            product?.characteristics.map((item, index) => (
+              <li key={index} className={styles.characteristicsItem}>
+                <p className={styles.productText}>{item.name}</p>
+                <div className={styles.characteristicsLine}></div>
+                <p className={styles.productText}>{item.value}</p>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 

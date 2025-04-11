@@ -1,16 +1,20 @@
-import {ProductCard} from "@/entities/Product";
+import { ProductCard } from "@/entities/Product";
 import "./catalog-page.scss";
 import products from "@/shared/mocks/products.json";
 import { useStore } from "@/store/store.ts";
 import ProductModal from "../ProductModal/ProductModal.tsx";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
-import {Product} from "@/entities/Product";
-import {BasketItem} from "@/entities/Basket";
+import { Product } from "@/entities/Product";
+import { BasketItem } from "@/entities/Basket";
+import { getProductModalActive } from "../../model/selectors/productModalActiveSelector.ts";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
+import { createPortal } from "react-dom";
 
 export const CatalogPage = observer(() => {
   const { t } = useTranslation();
-  const { basketStore, modalsStore, userStore } = useStore();
+  const productModalActive = useAppSelector(getProductModalActive);
+  const { basketStore, userStore } = useStore();
   const addToBasket = (product: Product | null) => {
     if (!product) return;
     const basket = localStorage.getItem("basket");
@@ -59,20 +63,20 @@ export const CatalogPage = observer(() => {
                 addToBasket={addToBasket}
                 key={product.id}
                 product={product}
-                toggleProductModal={modalsStore.toggleProductModal}
                 currencyRate={userStore.lang?.currencyRate || 1}
               />
             ))}
           </div>
         </div>
       </section>
-      <ProductModal
-        product={modalsStore.selectedProduct}
-        isActive={modalsStore.productModalActive}
-        addToBasket={addToBasket}
-        toggleIsActive={modalsStore.toggleProductModal}
-        currencyRate={userStore.lang?.currencyRate || 1}
-      />
+      {productModalActive &&
+        createPortal(
+          <ProductModal
+            // addToBasket={addToBasket}
+            currencyRate={userStore.lang?.currencyRate || 1}
+          />,
+          document.body,
+        )}
     </>
   );
 });

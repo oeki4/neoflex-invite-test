@@ -5,6 +5,8 @@
   height: 100vh;
   width: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -51,7 +53,7 @@
     margin: auto;
   }
 
-  &__close-btn {
+  &CloseBtn {
     position: absolute;
     top: 30px;
     right: 30px;
@@ -62,7 +64,7 @@
   }
 
 
-  &__photo-info {
+  &PhotoInfo {
     width: 100%;
     display: flex;
     justify-content: start;
@@ -75,7 +77,7 @@
     }
   }
 
-  &__photo {
+  &Photo {
     max-width: 200px;
 
     & img {
@@ -91,7 +93,7 @@
     }
   }
 
-  &__info {
+  &Info {
     margin-left: 40px;
     display: flex;
     flex-direction: column;
@@ -104,7 +106,7 @@
     }
   }
 
-  &__title {
+  &Title {
     @include montserrat-600;
     font-size: 20px;
     color: $product-modal-title;
@@ -114,12 +116,12 @@
       margin-bottom: 20px;
     }
 
-    &--mb10 {
+    &Mb10 {
       margin-bottom: 10px;
     }
   }
 
-  &__rate {
+  &Rate {
     display: flex;
     align-items: center;
 
@@ -128,7 +130,7 @@
     }
   }
 
-  &__rate-value {
+  &RateValue {
     @include montserrat-600;
     font-size: 17px;
     color: $product-rate;
@@ -137,13 +139,13 @@
     margin-left: 10px;
   }
 
-  &__rate-price {
+  &RatePrice {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
 
-  &__price {
+  &Price {
     @include montserrat-600;
     font-size: 17px;
     color: $product-price;
@@ -153,7 +155,7 @@
     position: relative;
   }
 
-  &__discount {
+  &Discount {
     @include montserrat-600;
     font-size: 14px;
     color: $product-discount;
@@ -167,7 +169,7 @@
     }
   }
 
-  &__text {
+  &Text {
     @include montserrat-500;
     font-size: 14px;
     color: $product-modal-text;
@@ -181,11 +183,11 @@
       white-space: wrap;
     }
 
-    &--mb10 {
+    &Mb10 {
       margin-bottom: 10px;
     }
 
-    &--wrap {
+    &Wrap {
       white-space: wrap;
       line-height: 1.5;
     }
@@ -194,14 +196,15 @@
 
 .characteristics {
   width: 100%;
-  &__item {
+  padding: 0;
+  &Item {
     width: 100%;
     display: grid;
     grid-template-columns: min-content auto min-content;
     margin-bottom: 10px;
   }
 
-  &__line {
+  &Line {
     border-bottom: 1px dashed $product-modal-line;
     margin-bottom: 3px;
   }

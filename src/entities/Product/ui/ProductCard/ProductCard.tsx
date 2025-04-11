@@ -2,29 +2,33 @@ import "./product-card.scss";
 import Star from "@/shared/ui/icons/Star.tsx";
 import Eye from "@/shared/ui/icons/Eye.tsx";
 import { useTranslation } from "react-i18next";
-import {priceNumToStr} from "@/shared/lib/priceNumToStr.ts";
-import {Product} from "@/types/pages/catalog.types.ts";
+import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
+import { Product } from "@/types/pages/catalog.types.ts";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
+import { useCallback } from "react";
+import { catalogPageSliceActions } from "@/pages/CatalogPage";
 
 interface ProductCardProps {
-	product: Product;
-	toggleProductModal: (product: Product | null) => void;
-	addToBasket: (product: Product) => void;
-	currencyRate: number;
+  product: Product;
+  addToBasket: (product: Product) => void;
+  currencyRate: number;
 }
 
 export const ProductCard = ({
   product,
   addToBasket,
-  toggleProductModal,
   currencyRate,
 }: ProductCardProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  const onShowProductModal = useCallback(() => {
+    dispatch(catalogPageSliceActions.showProductModal());
+    dispatch(catalogPageSliceActions.setSelectedProduct(product));
+  }, [dispatch, product]);
   return (
     <div className="product-card">
-      <span
-        onClick={() => toggleProductModal(product)}
-        className="product-card__more-btn"
-      >
+      <span onClick={onShowProductModal} className="product-card__more-btn">
         <Eye />
       </span>
       <div className="product-card__img-wrapper">

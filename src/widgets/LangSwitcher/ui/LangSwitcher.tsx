@@ -2,7 +2,7 @@ import "./lang-switcher.scss";
 import { useTranslation } from "react-i18next";
 import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";
-import {Lang, languages} from "@/shared/const/languages.ts";
+import { Lang, languages } from "@/shared/const/languages.ts";
 import Language from "@/shared/ui/icons/Language.tsx";
 
 export const LangSwitcher = observer(() => {
@@ -18,6 +18,7 @@ export const LangSwitcher = observer(() => {
       {languages.map((el) => (
         <button
           onClick={() => setLanguage(el)}
+          key={el.value}
           className={`language__btn ${userStore.lang?.value === el.value ? "language__btn--active" : ""}`}
         >
           {el.name}
