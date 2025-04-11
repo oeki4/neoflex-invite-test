@@ -1,12 +1,12 @@
-import Logo from "./Logo.tsx";
-import "../assets/scss/components/header.scss";
-import Favorite from "./Icons/Favorite.tsx";
-import Basket from "./Icons/Basket.tsx";
+import "./header.scss";
 import { NavLink } from "react-router-dom";
-import { useStore } from "../store/store.ts";
+import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";
+import Favorite from "@/shared/ui/icons/Favorite.tsx";
+import Basket from "@/shared/ui/icons/Basket.tsx";
+import Logo from "@/shared/ui/Logo/Logo.tsx";
 
-const Header = observer(() => {
+export const Header = observer(() => {
   const { basketStore } = useStore();
   return (
     <header className="header">
@@ -28,5 +28,3 @@ const Header = observer(() => {
     </header>
   );
 });
-
-export default Header;

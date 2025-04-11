@@ -1,5 +1,6 @@
-@use "../colors" as *;
-@use "../mixins" as *;
+@use '@/app/assets/styles/mixins' as *;
+@use '@/app/assets/styles/colors' as *;
+
 
 .header {
   @include container;

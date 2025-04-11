@@ -1,6 +1,6 @@
 import {ProductCard} from "@/entities/Product";
 import "./catalog.scss";
-import products from "@/mocks/products.json";
+import products from "@/shared/mocks/products.json";
 import { useStore } from "@/store/store.ts";
 import ProductModal from "../ProductModal/ProductModal.tsx";
 import { observer } from "mobx-react";

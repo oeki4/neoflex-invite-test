@@ -1,5 +1,5 @@
-@use '../mixins' as *;
-@use '../colors' as *;
+@use '@/app/assets/styles/mixins' as *;
+@use '@/app/assets/styles/colors' as *;
 
 .footer {
   @include container;

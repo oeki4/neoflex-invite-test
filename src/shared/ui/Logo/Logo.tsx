@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "../assets/scss/components/logo.scss";
+import "./logo.scss";
 
 const Logo = () => {
   return (

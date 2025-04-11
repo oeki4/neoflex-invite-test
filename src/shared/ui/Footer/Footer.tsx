@@ -1,14 +1,13 @@
-import "../assets/scss/components/footer.scss";
-import "../assets/scss/components/logo.scss";
-import Logo from "./Logo.tsx";
-import VK from "./Icons/VK.tsx";
-import Telegram from "./Icons/Telegram.tsx";
-import Whatsapp from "./Icons/Whatsapp.tsx";
+import "./footer.scss";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {LangSwitcher} from "@/widgets/LangSwitcher";
+import Logo from "@/shared/ui/Logo/Logo.tsx";
+import Telegram from "@/shared/ui/icons/Telegram.tsx";
+import Whatsapp from "@/shared/ui/icons/Whatsapp.tsx";
+import VK from "@/shared/ui/icons/VK.tsx";
 
-const Footer = () => {
+export const Footer = () => {
   const { t } = useTranslation();
   return (
     <footer className="footer">
@@ -78,5 +77,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

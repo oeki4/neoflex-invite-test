@@ -3,7 +3,7 @@ import BasketCard from "@/entities/Basket/ui/BasketCard/BasketCard.tsx";
 import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
-import paymentMethods from "@/mocks/payment-methods.json";
+import paymentMethods from "@/shared/mocks/payment-methods.json";
 import { useTranslation } from "react-i18next";
 import {priceNumToStr} from "@/shared/lib/priceNumToStr.ts";
 import Button from "@/shared/ui/Button/Button.tsx";
