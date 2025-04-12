@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Apple BYZ S852I",
-    "photo": "1.png",
+    "photo": "1.webp",
     "price": 38.26,
     "priceWithDiscount": 31.76,
     "rate": 4.7,
@@ -29,7 +29,7 @@
   {
     "id": 2,
     "title": "Apple EarPods",
-    "photo": "2.png",
+    "photo": "2.webp",
     "price": 25.25,
     "priceWithDiscount": null,
     "rate": 4.5,
@@ -56,7 +56,7 @@
   {
     "id": 3,
     "title": "Apple EarPods",
-    "photo": "3.png",
+    "photo": "3.webp",
     "price": 25.25,
     "priceWithDiscount": null,
     "rate": 4.5,
@@ -83,7 +83,7 @@
   {
     "id": 4,
     "title": "Apple BYZ S852I",
-    "photo": "1.png",
+    "photo": "1.webp",
     "price": 31.76,
     "priceWithDiscount": null,
     "rate": 4.7,
@@ -110,7 +110,7 @@
   {
     "id": 5,
     "title": "Apple EarPods",
-    "photo": "2.png",
+    "photo": "2.webp",
     "price": 25.25,
     "priceWithDiscount": null,
     "rate": 4.5,
@@ -137,7 +137,7 @@
   {
     "id": 6,
     "title": "Apple EarPods",
-    "photo": "3.png",
+    "photo": "3.webp",
     "price": 25.25,
     "priceWithDiscount": null,
     "rate": 4.5,
@@ -164,7 +164,7 @@
   {
     "id": 7,
     "title": "Apple AirPods",
-    "photo": "4.png",
+    "photo": "4.webp",
     "price": 103.36,
     "priceWithDiscount": null,
     "rate": 4.7,
@@ -191,7 +191,7 @@
   {
     "id": 8,
     "title": "GERLAX GH-04",
-    "photo": "5.png",
+    "photo": "5.webp",
     "price": 70.81,
     "priceWithDiscount": null,
     "rate": 4.7,
@@ -218,7 +218,7 @@
   {
     "id": 9,
     "title": "BOROFONE BO4",
-    "photo": "6.png",
+    "photo": "6.webp",
     "price": 81.66,
     "priceWithDiscount": null,
     "rate": 4.7,

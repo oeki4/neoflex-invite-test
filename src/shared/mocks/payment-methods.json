@@ -2,26 +2,26 @@
   {
     "id": 1,
     "name": "Сбербанк",
-    "img": "/img/payment-methods/sberbank.png"
+    "img": "/img/payment-methods/sberbank.webp"
   },
   {
     "id": 2,
     "name": "Альфабанк",
-    "img": "/img/payment-methods/alfabank.png"
+    "img": "/img/payment-methods/alfabank.webp"
   },
   {
     "id": 3,
     "name": "Райффайзен Банк",
-    "img": "/img/payment-methods/raiffeisen.png"
+    "img": "/img/payment-methods/raiffeisen.webp"
   },
   {
     "id": 4,
     "name": "T-Банк",
-    "img": "/img/payment-methods/tbank.png"
+    "img": "/img/payment-methods/tbank.webp"
   },
   {
     "id": 5,
     "name": "ЮMoney",
-    "img": "/img/payment-methods/yoomoney.png"
+    "img": "/img/payment-methods/yoomoney.webp"
   }
 ]

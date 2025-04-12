@@ -1,24 +1,41 @@
 import "./basket-card.scss";
 import { useTranslation } from "react-i18next";
-import {BasketItem} from "../../model/types/basketItem.ts";
-import {priceNumToStr} from "@/shared/lib/priceNumToStr.ts";
+import { BasketItem } from "../../model/types/basketItem.ts";
+import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
 import WhiteTrash from "@/shared/ui/icons/WhiteTrash.tsx";
 import Trash from "@/shared/ui/icons/Trash.tsx";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
+import { useCallback } from "react";
+import { basketSliceActions } from "@/entities/Basket";
 
 export interface BasketCardProps {
-	product: BasketItem;
-	setBasketItemAmount: (id: number, value: number) => void;
-	deleteItemFromBasket: (id: number) => void;
-	currencyRate: number;
+  product: BasketItem;
+  currencyRate: number;
 }
 
-const BasketCard = ({
-  product,
-  setBasketItemAmount,
-  deleteItemFromBasket,
-  currencyRate,
-}: BasketCardProps) => {
+const BasketCard = ({ product, currencyRate }: BasketCardProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const onDeleteBasketItem = useCallback(() => {
+    dispatch(basketSliceActions.deleteBasketItem(product.id));
+  }, [dispatch, product.id]);
+
+  const onAddBasketItemAmount = useCallback(() => {
+    dispatch(
+      basketSliceActions.setBasketItemAmount({
+        id: product.id,
+        value: product.amount + 1,
+      }),
+    );
+  }, [dispatch, product.amount, product.id]);
+  const onSubtractBasketItemAmount = useCallback(() => {
+    dispatch(
+      basketSliceActions.setBasketItemAmount({
+        id: product.id,
+        value: product.amount - 1,
+      }),
+    );
+  }, [dispatch, product.amount, product.id]);
   return (
     <div className="card">
       <div className="card__info">
@@ -39,34 +56,25 @@ const BasketCard = ({
               : t("${{num}}", {
                   num: priceNumToStr(product?.price * currencyRate),
                 })}
-            {product.priceWithDiscount ? (
+            {product.priceWithDiscount && (
               <span className="discount">
                 {t("${{num}}", {
                   num: priceNumToStr(product?.price * currencyRate),
                 })}
               </span>
-            ) : (
-              ""
             )}
           </p>
         </div>
         <div className="card__switch-price">
           <div className="switch">
             <button
-              onClick={() =>
-                setBasketItemAmount(product.id, product.amount - 1)
-              }
+              onClick={onSubtractBasketItemAmount}
               className="switch__btn"
             >
               &#8211;
             </button>
             <span className="switch__value">{product.amount}</span>
-            <button
-              onClick={() =>
-                setBasketItemAmount(product.id, product.amount + 1)
-              }
-              className="switch__btn"
-            >
+            <button onClick={onAddBasketItemAmount} className="switch__btn">
               +
             </button>
           </div>
@@ -96,16 +104,10 @@ const BasketCard = ({
           </p>
         </div>
       </div>
-      <button
-        onClick={() => deleteItemFromBasket(product.id)}
-        className="card__delete"
-      >
+      <button onClick={onDeleteBasketItem} className="card__delete">
         <WhiteTrash />
       </button>
-      <span
-        onClick={() => deleteItemFromBasket(product.id)}
-        className="card__trash"
-      >
+      <span onClick={onDeleteBasketItem} className="card__trash">
         <Trash />
       </span>
     </div>

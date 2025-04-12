@@ -48,6 +48,37 @@ const basketSlice = createSlice({
         state.basketProducts = [];
       }
     },
+    deleteBasketItem(state, action: PayloadAction<number>) {
+      state.basketProducts = state.basketProducts.filter(
+        (el) => el.id !== action.payload,
+      );
+      localStorage.setItem("basket", JSON.stringify(state.basketProducts));
+    },
+    setBasketItemAmount(
+      state,
+      action: PayloadAction<{
+        id: number;
+        value: number;
+      }>,
+    ) {
+      if (action.payload.value < 1) {
+        state.basketProducts = state.basketProducts.filter(
+          (el) => el.id !== action.payload.id,
+        );
+        localStorage.setItem("basket", JSON.stringify(state.basketProducts));
+        return;
+      }
+      state.basketProducts = state.basketProducts.map((el) => {
+        if (el.id === action.payload.id) {
+          return {
+            ...el,
+            amount: action.payload.value,
+          };
+        }
+        return el;
+      });
+      localStorage.setItem("basket", JSON.stringify(state.basketProducts));
+    },
     initBasket(state) {
       const basket = localStorage.getItem("basket");
       if (basket) {
@@ -58,6 +89,9 @@ const basketSlice = createSlice({
           localStorage.setItem("basket", JSON.stringify([]));
         }
       }
+    },
+    setResultPrice(state, action: PayloadAction<number>) {
+      state.resultPrice = action.payload;
     },
   },
 });

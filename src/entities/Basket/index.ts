@@ -8,3 +8,4 @@ export {
 } from "./model/slice/basketSlice.ts";
 
 export { getBasketProducts } from "./model/selectors/basketProductsSelector.ts";
+export { getResultPrice } from "./model/selectors/resultPriceSelector.ts";
