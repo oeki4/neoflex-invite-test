@@ -7,20 +7,21 @@ import { Product } from "@/types/pages/catalog.types.ts";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import { useCallback } from "react";
 import { catalogPageSliceActions } from "@/pages/CatalogPage";
+import { basketSliceActions } from "@/entities/Basket";
 
 interface ProductCardProps {
   product: Product;
-  addToBasket: (product: Product) => void;
   currencyRate: number;
 }
 
-export const ProductCard = ({
-  product,
-  addToBasket,
-  currencyRate,
-}: ProductCardProps) => {
+export const ProductCard = ({ product, currencyRate }: ProductCardProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const onAddProductToBasket = useCallback(() => {
+    if (product) {
+      dispatch(basketSliceActions.addProductToBasket(product));
+    }
+  }, [dispatch, product]);
 
   const onShowProductModal = useCallback(() => {
     dispatch(catalogPageSliceActions.showProductModal());
@@ -63,7 +64,7 @@ export const ProductCard = ({
           <p className="product-card__rate">{product.rate}</p>
         </div>
         <button
-          onClick={() => addToBasket(product)}
+          onClick={onAddProductToBasket}
           className="product-card__buy-btn"
         >
           {t("Buy")}

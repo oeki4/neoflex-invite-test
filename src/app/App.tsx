@@ -1,29 +1,22 @@
-import {Header} from "@/shared/ui/Header/Header.tsx";
-import {Footer} from "@/shared/ui/Footer/Footer.tsx";
-import {useStore} from "@/store/store.ts";
-import {useEffect} from "react";
-import {AppRouter} from "@/app/providers/AppRouter";
+import { Header } from "@/shared/ui/Header/Header.tsx";
+import { Footer } from "@/shared/ui/Footer/Footer.tsx";
+import { useEffect } from "react";
+import { AppRouter } from "@/app/providers/AppRouter";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
+import { basketSliceActions } from "@/entities/Basket";
 
 const App = () => {
-	const { basketStore } = useStore();
-	useEffect(() => {
-		const basket = localStorage.getItem("basket");
-		if (basket) {
-			try {
-				const basketJson = JSON.parse(basket);
-				basketStore.setBasketProducts(basketJson);
-			} catch {
-				localStorage.setItem("basket", JSON.stringify([]));
-			}
-		}
-	}, [basketStore]);
-	return (
-		<>
-			<Header />
-			<AppRouter/>
-			<Footer />
-		</>
-	)
-}
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(basketSliceActions.initBasket());
+  }, [dispatch]);
+  return (
+    <>
+      <Header />
+      <AppRouter />
+      <Footer />
+    </>
+  );
+};
 
 export default App;

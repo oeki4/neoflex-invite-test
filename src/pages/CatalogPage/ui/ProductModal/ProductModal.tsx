@@ -4,15 +4,14 @@ import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
 import Button from "@/shared/ui/Button/Button.tsx";
 import Star from "@/shared/ui/icons/Star.tsx";
 import Cross from "@/shared/ui/icons/Cross.tsx";
-// import { Product } from "@/entities/Product";
 import { useCallback } from "react";
 import { catalogPageSliceActions } from "@/pages/CatalogPage";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
 import { getSelectedProduct } from "../../model/selectors/selectedProductSelector.ts";
+import { basketSliceActions } from "@/entities/Basket";
 
 interface ProductModalProps {
-  // addToBasket: (product: Product | null) => void;
   currencyRate: number;
 }
 
@@ -23,6 +22,12 @@ const ProductModal = ({ currencyRate }: ProductModalProps) => {
   const onCloseProductModal = useCallback(() => {
     dispatch(catalogPageSliceActions.hideProductModal());
   }, [dispatch]);
+
+  const onAddProductToBasket = useCallback(() => {
+    if (product) {
+      dispatch(basketSliceActions.addProductToBasket(product));
+    }
+  }, [dispatch, product]);
   return (
     <div className={styles.wrapper}>
       <div className={styles.product}>
@@ -64,8 +69,7 @@ const ProductModal = ({ currencyRate }: ProductModalProps) => {
                 </p>
               )}
             </div>
-            {/*<Button onClick={() => addToBasket(product)}>*/}
-            <Button>{t("Add to cart")}</Button>
+            <Button onClick={onAddProductToBasket}>{t("Add to cart")}</Button>
           </div>
         </div>
         <h3 className={`${styles.productTitle} ${styles.productTitleMb10}`}>

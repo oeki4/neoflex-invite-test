@@ -1,5 +1,7 @@
-import {CatalogPageSchema} from "@/pages/CatalogPage";
+import { CatalogPageSchema } from "@/pages/CatalogPage";
+import { BasketSchema } from "@/entities/Basket";
 
 export interface StateSchema {
-	catalogPage: CatalogPageSchema;
+  catalogPage: CatalogPageSchema;
+  basket: BasketSchema;
 }
