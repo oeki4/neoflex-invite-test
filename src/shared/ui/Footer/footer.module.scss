@@ -29,7 +29,7 @@
             'logo social-links';
   }
 
-  &__links {
+  &Links {
     grid-area: links;
 
     @media(max-width: 576px) {
@@ -37,16 +37,18 @@
     }
   }
 
-  &__links-list {
+  &LinksList {
     display: flex;
     flex-direction: column;
+    padding: 0;
+    list-style: none;
   }
 
-  &__links-item {
+  &LinksItem {
     margin-bottom: 10px;
   }
 
-  &__links-link {
+  &LinksLink {
     @include montserrat-400;
     font-size: 17px;
     text-decoration: none;
@@ -66,15 +68,15 @@
     }
   }
 
-  &__service-lang {
+  &ServiceLang {
     grid-area: service-lang;
   }
 
-  &__social-links {
+  &SocialLinks {
     grid-area: social-links;
   }
 
-  &__social-link {
+  &SocialLink {
     margin-right: 18px;
   }
 

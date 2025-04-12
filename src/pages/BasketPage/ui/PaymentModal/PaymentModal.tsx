@@ -13,6 +13,7 @@ import { basketPageSliceActions } from "@/pages/BasketPage";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
 import { getResultPrice } from "@/entities/Basket";
 import { getSelectedPaymentMethod } from "@/pages/BasketPage/model/selectors/selectedPaymentMethodSelector.ts";
+import { getLang } from "@/entities/User";
 
 type FormInputs = {
   email: string;
@@ -20,14 +21,14 @@ type FormInputs = {
 
 export interface PaymentModalProps {
   paymentMethods: PaymentMethod[];
-  currencyRate: number;
 }
 
-const PaymentModal = ({ paymentMethods, currencyRate }: PaymentModalProps) => {
+const PaymentModal = ({ paymentMethods }: PaymentModalProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const resultPrice = useAppSelector(getResultPrice);
   const selectedPaymentMethod = useAppSelector(getSelectedPaymentMethod);
+  const lang = useAppSelector(getLang);
 
   const onHidePaymentModal = useCallback(() => {
     dispatch(basketPageSliceActions.hidePaymentModal());
@@ -62,8 +63,12 @@ const PaymentModal = ({ paymentMethods, currencyRate }: PaymentModalProps) => {
   const onSubmit = () => console.log("Submitted!");
 
   return (
-    <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.payment}>
+    <div onClick={onHidePaymentModal} className={styles.wrapper}>
+      <form
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.payment}
+      >
         <button onClick={onHidePaymentModal} className={styles.paymentCloseBtn}>
           <Cross />
         </button>
@@ -111,7 +116,7 @@ const PaymentModal = ({ paymentMethods, currencyRate }: PaymentModalProps) => {
           <span className={styles.paymentText}>{t("For payment")}</span>
           <span className={styles.paymentText}>
             {t("${{num}}", {
-              num: priceNumToStr(resultPrice * currencyRate),
+              num: priceNumToStr(resultPrice * lang.currencyRate),
             })}
           </span>
         </div>

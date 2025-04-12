@@ -1,11 +1,11 @@
-import "./button.scss";
-import {ReactNode} from "react";
+import styles from "./button.module.scss";
+import { ReactNode } from "react";
 
 export interface ButtonProps {
-	children: ReactNode;
-	onClick?: () => void;
-	submit?: boolean;
-	disabled?: boolean;
+  children: ReactNode;
+  onClick?: () => void;
+  submit?: boolean;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -18,7 +18,7 @@ const Button = ({
     <button
       type={submit ? "submit" : "button"}
       onClick={onClick && (() => onClick())}
-      className="btn"
+      className={styles.btn}
       disabled={disabled}
     >
       {children}

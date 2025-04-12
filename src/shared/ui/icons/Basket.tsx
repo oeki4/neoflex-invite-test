@@ -1,9 +1,9 @@
-import "./icon.scss";
+import styles from "./icon.module.scss";
 
 const Basket = () => {
   return (
     <svg
-      className="header-icon"
+      className={styles.headerIcon}
       width="25"
       height="25"
       viewBox="0 0 25 25"

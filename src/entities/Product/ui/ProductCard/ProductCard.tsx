@@ -1,71 +1,73 @@
-import "./product-card.scss";
+import styles from "./product-card.module.scss";
 import Star from "@/shared/ui/icons/Star.tsx";
-import Eye from "@/shared/ui/icons/Eye.tsx";
 import { useTranslation } from "react-i18next";
 import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
-import { Product } from "@/types/pages/catalog.types.ts";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { catalogPageSliceActions } from "@/pages/CatalogPage";
 import { basketSliceActions } from "@/entities/Basket";
+import { getLang } from "@/entities/User";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
+import { Product } from "@/entities/Product";
 
 interface ProductCardProps {
   product: Product;
-  currencyRate: number;
 }
 
-export const ProductCard = ({ product, currencyRate }: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const onAddProductToBasket = useCallback(() => {
-    if (product) {
-      dispatch(basketSliceActions.addProductToBasket(product));
-    }
-  }, [dispatch, product]);
+  const lang = useAppSelector(getLang);
+  const onAddProductToBasket = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.stopPropagation();
+      if (product) {
+        dispatch(basketSliceActions.addProductToBasket(product));
+      }
+    },
+    [dispatch, product],
+  );
 
   const onShowProductModal = useCallback(() => {
     dispatch(catalogPageSliceActions.showProductModal());
     dispatch(catalogPageSliceActions.setSelectedProduct(product));
   }, [dispatch, product]);
   return (
-    <div className="product-card">
-      <span onClick={onShowProductModal} className="product-card__more-btn">
-        <Eye />
-      </span>
-      <div className="product-card__img-wrapper">
+    <div onClick={onShowProductModal} className={styles.productCard}>
+      <div className={styles.productCardImgWrapper}>
         <img
           src={`/img/products/${product.photo}`}
           alt=""
-          className="product-card__img"
+          className={styles.productCardImg}
         />
       </div>
-      <div className="product-card__info">
-        <p className="product-card__name">{product.title}</p>
+      <div className={styles.productCardInfo}>
+        <p className={styles.productCardName}>{product.title}</p>
         {product.priceWithDiscount ? (
-          <p className="product-card__price">
+          <p className={styles.productCardPrice}>
             {t("${{num}}", {
-              num: priceNumToStr(product.priceWithDiscount * currencyRate),
+              num: priceNumToStr(product.priceWithDiscount * lang.currencyRate),
             })}
-            <span className="product-card__discount">
+            <span className={styles.productCardDiscount}>
               {t("${{num}}", {
-                num: priceNumToStr(product.price * currencyRate),
+                num: priceNumToStr(product.price * lang.currencyRate),
               })}
             </span>
           </p>
         ) : (
-          <p className="product-card__price">
+          <p className={styles.productCardPrice}>
             {t("${{num}}", {
-              num: priceNumToStr(product.price * currencyRate),
+              num: priceNumToStr(product.price * lang.currencyRate),
             })}
           </p>
         )}
-        <div className="product-card__rate-wrapper">
+        <div className={styles.productCardRateWrapper}>
           <Star />
-          <p className="product-card__rate">{product.rate}</p>
+          <p className={styles.productCardRate}>{product.rate}</p>
         </div>
         <button
           onClick={onAddProductToBasket}
-          className="product-card__buy-btn"
+          className={styles.productCardBuyBtn}
         >
           {t("Buy")}
         </button>

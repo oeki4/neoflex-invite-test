@@ -1,6 +1,5 @@
-import "./basket-page.scss";
+import styles from "./basket-page.module.scss";
 import BasketCard from "@/entities/Basket/ui/BasketCard/BasketCard.tsx";
-import { useStore } from "@/store/store.ts";
 import { observer } from "mobx-react";
 import { useCallback, useEffect } from "react";
 import paymentMethods from "@/shared/mocks/payment-methods.json";
@@ -20,9 +19,10 @@ import {
   getPaymentModalActive,
 } from "@/pages/BasketPage";
 import { createPortal } from "react-dom";
+import { getLang } from "@/entities/User";
 
 export const BasketPage = observer(() => {
-  const { userStore } = useStore();
+  const lang = useAppSelector(getLang);
   const basketProducts = useAppSelector(getBasketProducts);
   const paymentModalActive = useAppSelector(getPaymentModalActive);
   const resultPrice = useAppSelector(getResultPrice);
@@ -46,31 +46,27 @@ export const BasketPage = observer(() => {
 
   return (
     <>
-      <section className="basket">
-        <h2 className="basket__subtitle">{t("Basket")}</h2>
-        <div className="basket__inner">
-          <div className="basket__inner-cards">
+      <section className={styles.basket}>
+        <h2 className={styles.basketSubtitle}>{t("Basket")}</h2>
+        <div className={styles.basketInner}>
+          <div className={styles.basketInnerCards}>
             {basketProducts.map((product, id) => (
-              <BasketCard
-                key={id}
-                product={product}
-                currencyRate={userStore.lang?.currencyRate || 1}
-              />
+              <BasketCard key={id} product={product} />
             ))}
             {!basketProducts.length && (
-              <h2 className="basket__subtitle basket__subtitle--mt30">
+              <h2
+                className={`${styles.basketSubtitle} ${styles.basketSubtitleMt30}`}
+              >
                 {t("There is nothing in the cart yet")}
               </h2>
             )}
           </div>
-          <div className="order">
-            <div className="order__info">
-              <p className="order__info-text">{t("Total")}</p>
-              <p className="order__info-price">
+          <div className={styles.order}>
+            <div className={styles.orderInfo}>
+              <p className={styles.orderInfoText}>{t("Total")}</p>
+              <p className={styles.orderInfoPrice}>
                 {t("${{num}}", {
-                  num: priceNumToStr(
-                    resultPrice * (userStore.lang?.currencyRate || 1),
-                  ),
+                  num: priceNumToStr(resultPrice * (lang?.currencyRate || 1)),
                 })}
               </p>
             </div>
@@ -80,10 +76,7 @@ export const BasketPage = observer(() => {
       </section>
       {paymentModalActive &&
         createPortal(
-          <PaymentModal
-            paymentMethods={paymentMethods}
-            currencyRate={userStore.lang?.currencyRate || 1}
-          />,
+          <PaymentModal paymentMethods={paymentMethods} />,
           document.body,
         )}
     </>

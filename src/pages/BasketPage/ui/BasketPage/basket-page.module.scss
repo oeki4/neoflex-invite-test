@@ -9,20 +9,20 @@
     width: 85%;
   }
 
-  &__subtitle {
+  &Subtitle {
     @include montserrat-600;
     font-size: 20px;
     color: $basket-subtitle;
     margin: 0 10px 20px;
 
-    &--mt30 {
+    &Mt30 {
       @include montserrat-500;
       font-size: 20px;
       margin-top: 30px;
     }
   }
 
-  &__inner {
+  &Inner {
     display: flex;
     justify-content: space-between;
 
@@ -30,7 +30,7 @@
       flex-direction: column;
     }
 
-    &-cards {
+    &Cards {
       width: 100%;
       margin-bottom: 50px;
     }
@@ -53,22 +53,21 @@
     max-width: 100%;
   }
 
-
-  &__info {
+  &Info {
     width: 100%;
     padding: 20px 20px 15px 20px;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
 
-    &-price {
+    &Price {
       @include montserrat-600;
       font-size: 15px;
       color: $basket-order-price;
       white-space: nowrap;
     }
 
-    &-text {
+    &Text {
       @include montserrat-600;
       font-size: 15px;
       color: $basket-order-text;

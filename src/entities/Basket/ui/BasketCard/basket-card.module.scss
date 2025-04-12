@@ -11,7 +11,7 @@
   position: relative;
   margin-bottom: 20px;
 
-  &__trash {
+  &Trash {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -22,7 +22,7 @@
   }
 
 
-  &__info {
+  &Info {
     display: grid;
     padding: 20px;
 
@@ -38,7 +38,7 @@
     }
   }
 
-  &__img {
+  &Img {
     width: 100%;
     display: flex;
     justify-content: start;
@@ -47,7 +47,7 @@
       justify-content: center;
     }
 
-    &-inner {
+    &Inner {
       grid-area: image;
       max-height: 150px;
       margin-bottom: 20px;
@@ -60,7 +60,7 @@
     }
   }
 
-  &__desc {
+  &Desc {
     grid-area: desc;
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@
       margin-bottom: 12px;
     }
 
-    &-name {
+    &Name {
       @include montserrat-500;
       font-size: 17px;
       color: $basket-card-name;
@@ -80,14 +80,14 @@
     }
   }
 
-  &__switch-price {
+  &SwitchPrice {
     grid-area: switch;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
   }
 
-  &__delete {
+  &Delete {
     width: 100%;
     padding: 15px 0;
     border-radius: 20px;
@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
 
-  &__btn {
+  &Btn {
     background: $basket-card-switch-btn-bg;
     font-weight: 500;
     outline: none;
@@ -135,7 +135,7 @@
     }
   }
 
-  &__value {
+  &Value {
     @include montserrat-600;
     font-size: 17px;
     color: $basket-card-switch-value;
@@ -150,11 +150,11 @@
   white-space: nowrap;
   position: relative;
 
-  &--result {
+  &Result {
     color: $basket-card-result-price;
   }
-
 }
+
 .discount {
   @include montserrat-600;
   font-size: 14px;
@@ -168,11 +168,11 @@
     bottom: -75%;
   }
 
-  &--result {
-    bottom: -30%;
+  &Result {
+    bottom: -90%;
 
     @media(max-width: 992px) {
-      bottom: -20%;
+      bottom: -70%;
     }
   }
 }

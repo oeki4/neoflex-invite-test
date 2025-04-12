@@ -1,9 +1,9 @@
-import "./icon.scss";
+import styles from "./icon.module.scss";
 
 const WhiteTrash = () => {
   return (
     <svg
-      className="icon"
+      className={styles.icon}
       width="25"
       height="25"
       viewBox="0 0 30 30"

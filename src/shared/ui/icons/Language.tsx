@@ -1,9 +1,9 @@
-import "./icon.scss";
+import styles from "./icon.module.scss";
 
 const Language = () => {
   return (
     <svg
-      className="icon"
+      className={styles.icon}
       width="20"
       height="20"
       viewBox="0 0 20 20"

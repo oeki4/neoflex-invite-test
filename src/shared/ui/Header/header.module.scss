@@ -14,13 +14,13 @@
     width: 90%;
   }
 
-  &__links {
+  &Links {
     height: 100%;
     width: min-content;
     display: flex;
   }
 
-  &__link {
+  &Link {
     cursor: pointer;
     margin: 0 25px;
     position: relative;
@@ -29,7 +29,7 @@
       margin: 0 15px;
     }
 
-    &-count {
+    &Count {
       @include montserrat-500;
       position: absolute;
       top: -30%;

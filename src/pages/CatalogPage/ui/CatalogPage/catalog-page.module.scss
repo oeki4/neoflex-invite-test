@@ -15,14 +15,14 @@
   display: flex;
   justify-content: center;
 
-  &__title {
+  &Title {
     @include montserrat-600;
     font-size: 20px;
     color: $category-title;
     margin: 0 10px 20px;
   }
 
-  &__items {
+  &Items {
     width: 100%;
     display: flex;
     justify-content: space-between;

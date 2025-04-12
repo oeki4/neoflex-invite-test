@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import "./logo.scss";
+import styles from "./logo.module.scss";
 
 const Logo = () => {
   return (
-    <NavLink className="logo" to={"/"}>
+    <NavLink className={styles.logo} to={"/"}>
       QPICK
     </NavLink>
   );

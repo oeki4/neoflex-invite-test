@@ -1,7 +1,6 @@
 import { ProductCard } from "@/entities/Product";
-import "./catalog-page.scss";
+import styles from "./catalog-page.module.scss";
 import products from "@/shared/mocks/products.json";
-import { useStore } from "@/store/store.ts";
 import ProductModal from "../ProductModal/ProductModal.tsx";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
@@ -12,28 +11,19 @@ import { createPortal } from "react-dom";
 export const CatalogPage = observer(() => {
   const { t } = useTranslation();
   const productModalActive = useAppSelector(getProductModalActive);
-  const { userStore } = useStore();
   return (
     <>
-      <section className="catalog">
-        <h1 className="category__title">{t("Headphones")}</h1>
-        <div className="category">
-          <div className="category__items">
+      <section className={styles.catalog}>
+        <h1 className={styles.categoryTitle}>{t("Headphones")}</h1>
+        <div className={styles.category}>
+          <div className={styles.categoryItems}>
             {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                currencyRate={userStore.lang?.currencyRate || 1}
-              />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       </section>
-      {productModalActive &&
-        createPortal(
-          <ProductModal currencyRate={userStore.lang?.currencyRate || 1} />,
-          document.body,
-        )}
+      {productModalActive && createPortal(<ProductModal />, document.body)}
     </>
   );
 });

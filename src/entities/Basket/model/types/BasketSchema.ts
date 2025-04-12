@@ -1,6 +1,6 @@
-import { BasketProduct } from "@/types/store/basket.types.ts";
+import { BasketItem } from "./basketItem.ts";
 
 export interface BasketSchema {
-  basketProducts: Array<BasketProduct>;
+  basketProducts: Array<BasketItem>;
   resultPrice: number;
 }

@@ -1,6 +1,6 @@
 @use '@/app/assets/styles/colors' as *;
 
-.header-icon {
+.headerIcon {
   path {
     transition: .3s;
   }
@@ -18,8 +18,7 @@
   cursor: pointer;
 }
 
-.trash-icon {
-
+.trashIcon {
   path {
     transition: .3s;
   }
@@ -29,7 +28,7 @@
   }
 }
 
-.eye-icon {
+.eyeIcon {
   path {
     transition: .3s;
   }
@@ -39,7 +38,7 @@
   }
 }
 
-.social-icon {
+.socialIcon {
   path {
     transition: .3s;
   }

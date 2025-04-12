@@ -10,15 +10,13 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
 import { getSelectedProduct } from "../../model/selectors/selectedProductSelector.ts";
 import { basketSliceActions } from "@/entities/Basket";
+import { getLang } from "@/entities/User";
 
-interface ProductModalProps {
-  currencyRate: number;
-}
-
-const ProductModal = ({ currencyRate }: ProductModalProps) => {
+const ProductModal = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const product = useAppSelector(getSelectedProduct);
+  const lang = useAppSelector(getLang);
   const onCloseProductModal = useCallback(() => {
     dispatch(catalogPageSliceActions.hideProductModal());
   }, [dispatch]);
@@ -29,8 +27,8 @@ const ProductModal = ({ currencyRate }: ProductModalProps) => {
     }
   }, [dispatch, product]);
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.product}>
+    <div onClick={onCloseProductModal} className={styles.wrapper}>
+      <div onClick={(e) => e.stopPropagation()} className={styles.product}>
         <button
           onClick={onCloseProductModal}
           className={styles.productCloseBtn}
@@ -52,19 +50,21 @@ const ProductModal = ({ currencyRate }: ProductModalProps) => {
                 <p className={styles.productPrice}>
                   {t("${{num}}", {
                     num: priceNumToStr(
-                      product?.priceWithDiscount * currencyRate,
+                      product?.priceWithDiscount * lang.currencyRate,
                     ),
                   })}
                   <span className={styles.productDiscount}>
                     {t("${{num}}", {
-                      num: priceNumToStr(product?.price * currencyRate),
+                      num: priceNumToStr(product?.price * lang.currencyRate),
                     })}
                   </span>
                 </p>
               ) : (
                 <p className={styles.productPrice}>
                   {t("${{num}}", {
-                    num: priceNumToStr((product?.price || 0) * currencyRate),
+                    num: priceNumToStr(
+                      (product?.price || 0) * lang.currencyRate,
+                    ),
                   })}
                 </p>
               )}

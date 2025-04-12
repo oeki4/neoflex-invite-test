@@ -1,7 +1,7 @@
 @use '@/app/assets/styles/mixins' as *;
 @use '@/app/assets/styles/colors' as *;
 
-.product-card {
+.productCard {
   width: 350px;
   max-height: 400px;
   background-color: #ffffff;
@@ -34,13 +34,13 @@
     min-height: 300px;
   }
 
-  &__more-btn {
+  &MoreBtn {
     position: absolute;
     right: 20px;
     top: 30px;
   }
 
-  &__img-wrapper {
+  &ImgWrapper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -52,11 +52,11 @@
     }
   }
 
-  &__img {
+  &Img {
     height: 100%;
   }
 
-  &__info {
+  &Info {
     display: grid;
     grid-template-areas: "name price"
     "rate buy";
@@ -73,7 +73,7 @@
 
   }
 
-  &__name {
+  &Name {
     @include montserrat-600;
     font-size: 17px;
     color: $product-name;
@@ -81,7 +81,7 @@
     grid-area: name;
   }
 
-  &__price {
+  &Price {
     @include montserrat-600;
     font-size: 17px;
     color: $product-price;
@@ -95,7 +95,7 @@
     }
   }
 
-  &__discount {
+  &Discount {
     @include montserrat-600;
     font-size: 14px;
     color: $product-discount;
@@ -109,13 +109,13 @@
     }
   }
 
-  &__rate-wrapper {
+  &RateWrapper {
     grid-area: rate;
     display: flex;
     align-items: center;
   }
 
-  &__rate {
+  &Rate {
     @include montserrat-600;
     font-size: 17px;
     color: $product-rate;
@@ -128,7 +128,7 @@
     }
   }
 
-  &__buy-btn {
+  &BuyBtn {
     @include montserrat-600;
     grid-area: buy;
     text-align: right;

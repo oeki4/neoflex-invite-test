@@ -1,4 +1,4 @@
-import "./header.scss";
+import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react";
 import Favorite from "@/shared/ui/icons/Favorite.tsx";
@@ -10,16 +10,20 @@ import { getBasketProducts } from "@/entities/Basket";
 export const Header = observer(() => {
   const basketProducts = useAppSelector(getBasketProducts);
   return (
-    <header className="header">
+    <header className={styles.header}>
       <Logo />
-      <div className="header__links">
-        <NavLink to={"/basket"} className="header__link">
+      <div className={styles.headerLinks}>
+        <NavLink to={"/basket"} className={styles.headerLink}>
           <Favorite />
-          <span className="header__link-count">{basketProducts.length}</span>
+          <span className={styles.headerLinkCount}>
+            {basketProducts.length}
+          </span>
         </NavLink>
-        <NavLink to={"/basket"} className="header__link">
+        <NavLink to={"/basket"} className={styles.headerLink}>
           <Basket />
-          <span className="header__link-count">{basketProducts.length}</span>
+          <span className={styles.headerLinkCount}>
+            {basketProducts.length}
+          </span>
         </NavLink>
       </div>
     </header>

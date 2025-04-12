@@ -1,9 +1,9 @@
-import "./icon.scss";
+import styles from "./icon.module.scss";
 
 const VK = () => {
   return (
     <svg
-      className="social-icon"
+      className={styles.socialIcon}
       width="30"
       height="30"
       viewBox="0 0 30 30"
