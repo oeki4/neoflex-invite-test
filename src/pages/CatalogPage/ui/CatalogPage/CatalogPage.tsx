@@ -2,11 +2,10 @@ import { ProductCard } from "@/entities/Product";
 import styles from "./catalog-page.module.scss";
 import products from "@/shared/mocks/products.json";
 import ProductModal from "../ProductModal/ProductModal.tsx";
-import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
 
-export const CatalogPage = observer(() => {
+export const CatalogPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -24,4 +23,4 @@ export const CatalogPage = observer(() => {
       {createPortal(<ProductModal />, document.body)}
     </>
   );
-});
+};

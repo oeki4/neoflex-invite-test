@@ -1,0 +1,37 @@
+@use '@/app/assets/styles/mixins' as *;
+@use '@/app/assets/styles/colors' as *;
+
+.notFound {
+  @include container;
+  min-height: 70vh;
+
+  @media(max-width: 576px) {
+    width: 85%;
+  }
+}
+
+.title {
+  @include montserrat-600;
+  font-size: 20px;
+  color: $basket-subtitle;
+}
+
+.link {
+  @include montserrat-400;
+  font-size: 17px;
+  text-decoration: none;
+  color: $footer-link;
+  transition: .3s;
+
+  @media(max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media(max-width: 576px) {
+    font-size: 14px;
+  }
+
+  &:hover {
+    color: $footer-link-hover;
+  }
+}

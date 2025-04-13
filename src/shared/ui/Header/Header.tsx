@@ -1,13 +1,12 @@
 import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
-import { observer } from "mobx-react";
 import Favorite from "@/shared/ui/icons/Favorite.tsx";
 import Basket from "@/shared/ui/icons/Basket.tsx";
 import Logo from "@/shared/ui/Logo/Logo.tsx";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
 import { getBasketProducts } from "@/entities/Basket";
 
-export const Header = observer(() => {
+export const Header = () => {
   const basketProducts = useAppSelector(getBasketProducts);
   return (
     <header className={styles.header}>
@@ -28,4 +27,4 @@ export const Header = observer(() => {
       </div>
     </header>
   );
-});
+};

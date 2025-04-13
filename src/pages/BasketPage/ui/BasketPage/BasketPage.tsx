@@ -1,6 +1,5 @@
 import styles from "./basket-page.module.scss";
 import BasketCard from "@/entities/Basket/ui/BasketCard/BasketCard.tsx";
-import { observer } from "mobx-react";
 import { useCallback, useEffect } from "react";
 import paymentMethods from "@/shared/mocks/payment-methods.json";
 import { useTranslation } from "react-i18next";
@@ -18,7 +17,7 @@ import { basketPageSliceActions } from "@/pages/BasketPage";
 import { createPortal } from "react-dom";
 import { getLang } from "@/entities/User";
 
-export const BasketPage = observer(() => {
+export const BasketPage = () => {
   const lang = useAppSelector(getLang);
   const basketProducts = useAppSelector(getBasketProducts);
   const resultPrice = useAppSelector(getResultPrice);
@@ -77,4 +76,4 @@ export const BasketPage = observer(() => {
       )}
     </>
   );
-});
+};
