@@ -14,17 +14,13 @@ import {
   getResultPrice,
 } from "@/entities/Basket";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
-import {
-  basketPageSliceActions,
-  getPaymentModalActive,
-} from "@/pages/BasketPage";
+import { basketPageSliceActions } from "@/pages/BasketPage";
 import { createPortal } from "react-dom";
 import { getLang } from "@/entities/User";
 
 export const BasketPage = observer(() => {
   const lang = useAppSelector(getLang);
   const basketProducts = useAppSelector(getBasketProducts);
-  const paymentModalActive = useAppSelector(getPaymentModalActive);
   const resultPrice = useAppSelector(getResultPrice);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -41,8 +37,9 @@ export const BasketPage = observer(() => {
   }, [basketProducts, dispatch]);
 
   const onShowPaymentModal = useCallback(() => {
+    if (resultPrice <= 0) return;
     dispatch(basketPageSliceActions.showPaymentModal());
-  }, [dispatch]);
+  }, [dispatch, resultPrice]);
 
   return (
     <>
@@ -74,11 +71,10 @@ export const BasketPage = observer(() => {
           </div>
         </div>
       </section>
-      {paymentModalActive &&
-        createPortal(
-          <PaymentModal paymentMethods={paymentMethods} />,
-          document.body,
-        )}
+      {createPortal(
+        <PaymentModal paymentMethods={paymentMethods} />,
+        document.body,
+      )}
     </>
   );
 });

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AppRouter } from "@/app/providers/AppRouter";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import { basketSliceActions } from "@/entities/Basket";
+import styles from "./assets/styles/app.module.scss";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -11,11 +12,11 @@ const App = () => {
     dispatch(basketSliceActions.initBasket());
   }, [dispatch]);
   return (
-    <>
+    <div className={styles.app}>
       <Header />
       <AppRouter />
       <Footer />
-    </>
+    </div>
   );
 };
 

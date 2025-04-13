@@ -11,11 +11,13 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector
 import { getSelectedProduct } from "../../model/selectors/selectedProductSelector.ts";
 import { basketSliceActions } from "@/entities/Basket";
 import { getLang } from "@/entities/User";
+import { getProductModalActive } from "@/pages/CatalogPage/model/selectors/productModalActiveSelector.ts";
 
 const ProductModal = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const product = useAppSelector(getSelectedProduct);
+  const productModalActive = useAppSelector(getProductModalActive);
   const lang = useAppSelector(getLang);
   const onCloseProductModal = useCallback(() => {
     dispatch(catalogPageSliceActions.hideProductModal());
@@ -27,7 +29,10 @@ const ProductModal = () => {
     }
   }, [dispatch, product]);
   return (
-    <div onClick={onCloseProductModal} className={styles.wrapper}>
+    <div
+      onClick={onCloseProductModal}
+      className={`${styles.wrapper} ${productModalActive && styles.wrapperVisible}`}
+    >
       <div onClick={(e) => e.stopPropagation()} className={styles.product}>
         <button
           onClick={onCloseProductModal}

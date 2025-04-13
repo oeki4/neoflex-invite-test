@@ -9,7 +9,10 @@ import { priceNumToStr } from "@/shared/lib/priceNumToStr.ts";
 import Button from "@/shared/ui/Button/Button.tsx";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch.ts";
 import { useCallback } from "react";
-import { basketPageSliceActions } from "@/pages/BasketPage";
+import {
+  basketPageSliceActions,
+  getPaymentModalActive,
+} from "@/pages/BasketPage";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector/useAppSelector.ts";
 import { getResultPrice } from "@/entities/Basket";
 import { getSelectedPaymentMethod } from "@/pages/BasketPage/model/selectors/selectedPaymentMethodSelector.ts";
@@ -27,6 +30,7 @@ const PaymentModal = ({ paymentMethods }: PaymentModalProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const resultPrice = useAppSelector(getResultPrice);
+  const paymentModalActive = useAppSelector(getPaymentModalActive);
   const selectedPaymentMethod = useAppSelector(getSelectedPaymentMethod);
   const lang = useAppSelector(getLang);
 
@@ -63,7 +67,10 @@ const PaymentModal = ({ paymentMethods }: PaymentModalProps) => {
   const onSubmit = () => console.log("Submitted!");
 
   return (
-    <div onClick={onHidePaymentModal} className={styles.wrapper}>
+    <div
+      onClick={onHidePaymentModal}
+      className={`${styles.wrapper} ${paymentModalActive && styles.wrapperVisible}`}
+    >
       <form
         onClick={(e) => e.stopPropagation()}
         onSubmit={handleSubmit(onSubmit)}

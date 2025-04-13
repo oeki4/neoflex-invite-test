@@ -11,6 +11,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .3s;
+  visibility: hidden;
+  opacity: 0;
+
+  &Visible {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .payment {
